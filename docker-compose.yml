@@ -2,16 +2,33 @@ version: '3'
 name: buson-bd-eng-dados
 
 services:
-  postgres:
-    container_name: 'postgres-buson-bd-eng-dados'
-    build: .
-    env_file:
-      - .env
+  # postgres-buson-bd-eng-dados:
+  #   container_name: 'postgres-buson-bd-eng-dados'
+  #   build: .
+  #   env_file:
+  #     - .env
+  #   ports:
+  #     - '5432:5432'
+  #   volumes:
+  #     - postgres_data:/var/lib/postgresql/data
+  #   restart: unless-stopped
+
+  minioserver:
+    image: minio/minio
     ports:
-      - '5432:5432'
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-    restart: unless-stopped
+      - 9000:9000
+      - 9001:9001
+    environment:
+      MINIO_ROOT_USER: minioadmin
+      MINIO_ROOT_PASSWORD: minioadmin
+    container_name: minio
+    command: server /data --console-address ":9001"
+  # spark_notebook:
+  #   image: alexmerced/spark33-notebook
+  #   ports: 
+  #     8888:8888
+  #   env_file: .env
+  #   container_name: notebook
 
 volumes:
   postgres_data:
