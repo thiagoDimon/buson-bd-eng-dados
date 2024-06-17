@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-GeraDadosApplication<geraDados>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.faker.geraDados.GeraDadosApplication",
+            "projectName": "geraDados",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
