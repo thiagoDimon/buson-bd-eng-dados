@@ -1,0 +1,17 @@
+version: '3'
+name: buson-bd-eng-dados
+
+services:
+  postgres:
+    container_name: 'postgres-buson-bd-eng-dados'
+    build: .
+    env_file:
+      - .env
+    ports:
+      - '5432:5432'
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
