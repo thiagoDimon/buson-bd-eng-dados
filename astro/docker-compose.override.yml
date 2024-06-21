@@ -1,5 +1,6 @@
 version: '3.1'
 services:
+
   minio:
     image: quay.io/minio/minio
     networks:
@@ -9,23 +10,43 @@ services:
       - 9000:9000
       - 9001:9001
     volumes:
-       - ${PWD}/include/minio:/data
+      - ${PWD}/include/minio:/data
     extra_hosts:
-      - "host.docker.internal:host-gateway"  
+      - "host.docker.internal:host-gateway"
     restart: always
     env_file: .env
+
   scheduler:
     extra_hosts:
       - "host.docker.internal:host-gateway"
     ports:
       - 8501:8501
       - 8502:8502
+
   webserver:
     extra_hosts:
       - "host.docker.internal:host-gateway"
+
   triggerer:
     extra_hosts:
       - "host.docker.internal:host-gateway"
+
   postgres:
     extra_hosts:
-      - "host.docker.internal:host-gateway" 
+      - "host.docker.internal:host-gateway"
+
+  spark:
+    image: docker.io/bitnami/spark:3.3.1
+    environment:
+      - SPARK_MODE=master
+      - SPARK_RPC_AUTHENTICATION_ENABLED=no
+      - SPARK_RPC_ENCRYPTION_ENABLED=no
+      - SPARK_LOCAL_STORAGE_ENCRYPTION_ENABLED=no
+      - SPARK_SSL_ENABLED=no
+      - SPARK_USER=spark
+    ports:
+      - '8081:8081'
+    networks:
+      - airflow
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
