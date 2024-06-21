@@ -14,12 +14,6 @@ public class Pagamento {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "tx_id")
-    private String txId;
-
-    @Column(name = "pix_copia_cola")
-    private String pixCopiaCola;
-
     @ManyToOne
     @JoinColumn(name = "usuario_id", nullable = false)
     private Usuario usuario;
@@ -53,10 +47,8 @@ public class Pagamento {
     public Pagamento() {
     }
 
-    public Pagamento(Long id, String txId, String pixCopiaCola, Usuario usuario, EnumPagamentoTipo tipo, int valor, int multa, LocalDateTime dataVencimento, LocalDateTime dataPagamento, EnumSituacaoPagamento situacaoPagamento, LocalDateTime createdAt, LocalDateTime updatedAt) {
+    public Pagamento(Long id, Usuario usuario, EnumPagamentoTipo tipo, int valor, int multa, LocalDateTime dataVencimento, LocalDateTime dataPagamento, EnumSituacaoPagamento situacaoPagamento, LocalDateTime createdAt, LocalDateTime updatedAt) {
         this.id = id;
-        this.txId = txId;
-        this.pixCopiaCola = pixCopiaCola;
         this.usuario = usuario;
         this.tipo = tipo;
         this.valor = valor;
@@ -74,22 +66,6 @@ public class Pagamento {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getTxId() {
-        return txId;
-    }
-
-    public void setTxId(String txId) {
-        this.txId = txId;
-    }
-
-    public String getPixCopiaCola() {
-        return pixCopiaCola;
-    }
-
-    public void setPixCopiaCola(String pixCopiaCola) {
-        this.pixCopiaCola = pixCopiaCola;
     }
 
     public Usuario getUsuario() {
@@ -163,4 +139,6 @@ public class Pagamento {
     public void setUpdatedAt(LocalDateTime updatedAt) {
         this.updatedAt = updatedAt;
     }
+
+   
 }
