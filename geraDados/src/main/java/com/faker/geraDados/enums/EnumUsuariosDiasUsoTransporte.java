@@ -8,9 +8,7 @@ public enum EnumUsuariosDiasUsoTransporte {
     TERCA(),
     QUARTA(),
     QUINTA(),
-    SEXTA(),
-    SABADO(),
-    DOMINGO();
+    SEXTA();
 
     EnumUsuariosDiasUsoTransporte() {
     }
