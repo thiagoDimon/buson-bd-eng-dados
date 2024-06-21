@@ -49,6 +49,9 @@ public class Usuario {
     @Enumerated(EnumType.STRING)
     @Column(name = "situacao", nullable = false)
     private EnumUsuarioSituacao situacao;
+    
+    @Column(name = "dias_uso_transporte", nullable = false)
+    private String diasUsoTransporte;
 
     @Column(name = "created_at", nullable = false)
     private LocalDateTime createdAt;
@@ -59,10 +62,10 @@ public class Usuario {
     public Usuario() {
     }
 
-    public Usuario(Long id, String email, String nome, String telefone, String endereco, String matricula, Curso curso, Associacao associacao, EnumTipoAcesso tipoAcesso, String senha, EnumUsuarioSituacao situacao, LocalDateTime createdAt, LocalDateTime updatedAt) {
+    public Usuario(Long id, String nome, String email, String telefone, String endereco, String matricula, Curso curso, Associacao associacao, EnumTipoAcesso tipoAcesso, String senha, EnumUsuarioSituacao situacao, String diasUsoTransporte, LocalDateTime createdAt, LocalDateTime updatedAt) {
         this.id = id;
-        this.email = email;
         this.nome = nome;
+        this.email = email;
         this.telefone = telefone;
         this.endereco = endereco;
         this.matricula = matricula;
@@ -71,124 +74,122 @@ public class Usuario {
         this.tipoAcesso = tipoAcesso;
         this.senha = senha;
         this.situacao = situacao;
+        this.diasUsoTransporte = diasUsoTransporte;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
     }
 
-    public Long id() {
+    public Long getId() {
         return id;
     }
 
-    public Usuario setId(Long id) {
+    public void setId(Long id) {
         this.id = id;
-        return this;
     }
 
-    public String nome() {
+    public String getNome() {
         return nome;
     }
 
-    public Usuario setNome(String nome) {
+    public void setNome(String nome) {
         this.nome = nome;
-        return this;
     }
 
-    public String email() {
+    public String getEmail() {
         return email;
     }
 
-    public Usuario setEmail(String email) {
+    public void setEmail(String email) {
         this.email = email;
-        return this;
     }
 
-    public String endereco() {
-        return endereco;
-    }
-
-    public Usuario setEndereco(String endereco) {
-        this.endereco = endereco;
-        return this;
-    }
-
-    public String telefone() {
+    public String getTelefone() {
         return telefone;
     }
 
-    public Usuario setTelefone(String telefone) {
+    public void setTelefone(String telefone) {
         this.telefone = telefone;
-        return this;
     }
 
-    public Curso curso() {
-        return curso;
+    public String getEndereco() {
+        return endereco;
     }
 
-    public Usuario setCurso(Curso curso) {
-        this.curso = curso;
-        return this;
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
     }
 
-    public String matricula() {
+    public String getMatricula() {
         return matricula;
     }
 
-    public Usuario setMatricula(String matricula) {
+    public void setMatricula(String matricula) {
         this.matricula = matricula;
-        return this;
     }
 
-    public Associacao associacao() {
+    public Curso getCurso() {
+        return curso;
+    }
+
+    public void setCurso(Curso curso) {
+        this.curso = curso;
+    }
+
+    public Associacao getAssociacao() {
         return associacao;
     }
 
-    public Usuario setAssociacao(Associacao associacao) {
+    public void setAssociacao(Associacao associacao) {
         this.associacao = associacao;
-        return this;
     }
 
-    public EnumTipoAcesso tipoAcesso() {
+    public EnumTipoAcesso getTipoAcesso() {
         return tipoAcesso;
     }
 
-    public Usuario setTipoAcesso(EnumTipoAcesso tipoAcesso) {
+    public void setTipoAcesso(EnumTipoAcesso tipoAcesso) {
         this.tipoAcesso = tipoAcesso;
-        return this;
     }
 
-    public String senha() {
+    public String getSenha() {
         return senha;
     }
 
-    public Usuario setSenha(String senha) {
+    public void setSenha(String senha) {
         this.senha = senha;
-        return this;
     }
 
-    public EnumUsuarioSituacao situacao() {
+    public EnumUsuarioSituacao getSituacao() {
         return situacao;
     }
 
-    public Usuario setSituacao(EnumUsuarioSituacao situacao) {
+    public void setSituacao(EnumUsuarioSituacao situacao) {
         this.situacao = situacao;
-        return this;
     }
 
-    public LocalDateTime createdAt() {
+    public String getDiasUsoTransporte() {
+        return diasUsoTransporte;
+    }
+
+    public void setDiasUsoTransporte(String diasUsoTransporte) {
+        this.diasUsoTransporte = diasUsoTransporte;
+    }
+
+    public LocalDateTime getCreatedAt() {
         return createdAt;
     }
 
-    public Usuario setCreatedAt(LocalDateTime createdAt) {
+    public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
-        return this;
     }
 
-    public LocalDateTime updatedAt() {
+    public LocalDateTime getUpdatedAt() {
         return updatedAt;
     }
 
-    public Usuario setUpdatedAt(LocalDateTime updatedAt) {
+    public void setUpdatedAt(LocalDateTime updatedAt) {
         this.updatedAt = updatedAt;
-        return this;
     }
+
+    
 }

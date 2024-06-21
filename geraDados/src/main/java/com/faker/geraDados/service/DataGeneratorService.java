@@ -30,24 +30,18 @@ public class DataGeneratorService {
     @Autowired
     private ParametroRepository parametroRepository;
     @Autowired
-    private TokenAutenticacaoRepository tokenAutenticacaoRepository;
-    @Autowired
     private PagamentoRepository pagamentoRepository;
-    @Autowired
-    private ImagemRepository imagemRepository;
 
     private final Faker faker = new Faker();
     private final Random random = new Random();
 
     public void generateData() {
-        generateAssociacaos(12000);
-        generateInstituicaos(10000);
-        generateCursos(10000);
-        generateUsuarios(10000);
-        generateParametros(11000);
-        generateTokenAutenticacaos(10000);
-        generatePagamentos(10000);
-        generateImagems(10000);
+        generateAssociacaos(50);
+        generateInstituicaos(250);
+        generateCursos(5000);
+        generateUsuarios(2500);
+        generateParametros(50);
+        generatePagamentos();
     }
 
     private void generateAssociacaos(int count) {
@@ -70,8 +64,12 @@ public class DataGeneratorService {
             Instituicao instituicao = new Instituicao();
             instituicao.setNome(faker.company().name());
             instituicao.setEndereco(faker.address().fullAddress());
-            instituicao.setSituacao(EnumInstituicaoSituacao.values()[random.nextInt(EnumInstituicaoSituacao.values().length)]);
-            instituicao.setAssociacao(associacaoRepository.findById((long) (random.nextInt(10000) + 1)).orElse(null)); // Adjust as necessary
+            instituicao.setSituacao(EnumInstituicaoSituacao.ATIVO);
+            long assoId = 1;
+            if (count % 5 == 0) {
+                assoId += 1;
+            }
+            instituicao.setAssociacao(associacaoRepository.findById(assoId).orElse(null));
             instituicao.setCreatedAt(randomDate());
             instituicao.setUpdatedAt(randomDate());
             instituicaoRepository.save(instituicao);
@@ -84,8 +82,12 @@ public class DataGeneratorService {
         IntStream.range(0, count).forEach(i -> {
             Curso curso = new Curso();
             curso.setNome(faker.educator().course());
-            curso.setSituacao(EnumCursosSituacao.values()[random.nextInt(EnumCursosSituacao.values().length)]);
-            curso.setInstituicao(instituicaoRepository.findById((long) (random.nextInt(10000) + 1)).orElse(null)); // Adjust as necessary
+            curso.setSituacao(EnumCursosSituacao.ATIVO);
+            long instId = 1;
+            if (count % 20 == 0) {
+                instId += 1;
+            }
+            curso.setInstituicao(instituicaoRepository.findById(instId).orElse(null)); // Adjust as necessary
             curso.setCreatedAt(randomDate());
             curso.setUpdatedAt(randomDate());
             cursoRepository.save(curso);
@@ -106,11 +108,22 @@ public class DataGeneratorService {
             usuario.setTelefone(faker.phoneNumber().phoneNumber());
             usuario.setEndereco(faker.address().fullAddress());
             usuario.setMatricula(faker.idNumber().valid());
-            usuario.setCurso(cursoRepository.findById((long) (random.nextInt(10000) + 1)).orElse(null)); // Adjust as necessary
-            usuario.setAssociacao(associacaoRepository.findById((long) (random.nextInt(10000) + 1)).orElse(null)); // Adjust as necessary
-            usuario.setTipoAcesso(EnumTipoAcesso.values()[random.nextInt(EnumTipoAcesso.values().length)]);
+            usuario.setCurso(cursoRepository.findById((long) (random.nextInt(4998) + 1)).orElse(null)); // Adjust as necessary
+            usuario.setAssociacao(usuario.getCurso().getInstituicao().getAssociacao()); // Adjust as necessary
+            usuario.setTipoAcesso(EnumTipoAcesso.ALUNO);
             usuario.setSenha(faker.internet().password());
-            usuario.setSituacao(EnumUsuarioSituacao.values()[random.nextInt(EnumUsuarioSituacao.values().length)]);
+            usuario.setSituacao(EnumUsuarioSituacao.ATIVO);
+            List<EnumUsuariosDiasUsoTransporte> diasUsoTransportes = new ArrayList<>();
+            for (int j = 0; j < (random.nextInt(4) + 1); j++) {
+                EnumUsuariosDiasUsoTransporte enumUsuariosDiasUsoTransporte = EnumUsuariosDiasUsoTransporte.values()[random.nextInt(EnumUsuariosDiasUsoTransporte.values().length)];
+                diasUsoTransportes.add(enumUsuariosDiasUsoTransporte);
+            }
+            StringBuilder sb = new StringBuilder();
+            diasUsoTransportes.forEach(action -> {
+                sb.append(action).append(",");
+            });
+            sb.deleteCharAt(sb.length() - 1);
+            usuario.setDiasUsoTransporte(sb.toString());
             usuario.setCreatedAt(randomDate());
             usuario.setUpdatedAt(randomDate());
             usuarioRepository.save(usuario);
@@ -142,53 +155,41 @@ public class DataGeneratorService {
         System.out.println("passou parametro");
     }
 
-    private void generateTokenAutenticacaos(int count) {
-        IntStream.range(0, count).forEach(i -> {
-            TokenAutenticacao tokenAutenticacao = new TokenAutenticacao();
-            tokenAutenticacao.setUsuario(usuarioRepository.findById((long) (random.nextInt(10000) + 1)).orElse(null)); // Adjust as necessary
-            tokenAutenticacao.setToken(faker.internet().uuid());
-            tokenAutenticacao.setDataValidade(randomDate());
-            tokenAutenticacao.setCreatedAt(randomDate());
-            tokenAutenticacao.setUpdatedAt(randomDate());
-            tokenAutenticacaoRepository.save(tokenAutenticacao);
-        });
+    private void generatePagamentos() {
+        List<Usuario> usuarios = usuarioRepository.findAll();
+        usuarios.forEach(usuario -> {
+            LocalDateTime startDate = LocalDateTime.of(2022, 1, 1, 0, 0);
+            LocalDateTime endDate = LocalDateTime.of(2024, 12, 31, 23, 59);
 
-        System.out.println("passou token");
-    }
+            while (startDate.isBefore(endDate)) {
+                Pagamento pagamento = new Pagamento();
+                pagamento.setUsuario(usuario);
+                pagamento.setTipo(EnumPagamentoTipo.values()[random.nextInt(EnumPagamentoTipo.values().length)]);
+                pagamento.setValor(faker.number().numberBetween(20, 80));
+                pagamento.setMulta(0);
+                pagamento.setDataVencimento(startDate);
+                pagamento.setDataPagamento(randomDateWithinMonth(startDate));
+                pagamento.setSituacaoPagamento(EnumSituacaoPagamento.values()[random.nextInt(EnumSituacaoPagamento.values().length)]);
+                if (pagamento.getSituacaoPagamento().equals(EnumSituacaoPagamento.ATRASADO)) {
+                    pagamento.setMulta(faker.number().numberBetween(5, 15));
+                }
+                pagamento.setCreatedAt(randomDate());
+                pagamento.setUpdatedAt(randomDate());
+                pagamentoRepository.save(pagamento);
 
-    private void generatePagamentos(int count) {
-        IntStream.range(0, count).forEach(i -> {
-            Pagamento pagamento = new Pagamento();
-            pagamento.setTxId(faker.internet().uuid());
-            pagamento.setPixCopiaCola(faker.internet().uuid());
-            pagamento.setUsuario(usuarioRepository.findById((long) (random.nextInt(10000) + 1)).orElse(null)); // Adjust as necessary
-            pagamento.setTipo(EnumPagamentoTipo.values()[random.nextInt(EnumPagamentoTipo.values().length)]);
-            pagamento.setValor(faker.number().numberBetween(100, 1000));
-            pagamento.setMulta(faker.number().numberBetween(10, 100));
-            pagamento.setDataVencimento(randomDate());
-            pagamento.setDataPagamento(randomDate());
-            pagamento.setSituacaoPagamento(EnumSituacaoPagamento.values()[random.nextInt(EnumSituacaoPagamento.values().length)]);
-            pagamento.setCreatedAt(randomDate());
-            pagamento.setUpdatedAt(randomDate());
-            pagamentoRepository.save(pagamento);
+                startDate = startDate.plusMonths(1);
+            }
         });
 
         System.out.println("passou pagamentos");
     }
-
-    private void generateImagems(int count) {
-        IntStream.range(0, count).forEach(i -> {
-            Imagem imagem = new Imagem();
-            imagem.setImagem(faker.internet().image().getBytes()); // Simulated image data
-            imagem.setCreatedAt(randomDate());
-            imagem.setUpdatedAt(randomDate());
-            imagemRepository.save(imagem);
-        });
-
-        System.out.println("passou imagens");
-    }
-
+    
     private LocalDateTime randomDate() {
         return LocalDateTime.ofInstant(faker.date().past(1095, java.util.concurrent.TimeUnit.DAYS).toInstant(), ZoneId.systemDefault());
+    }
+    
+    private LocalDateTime randomDateWithinMonth(LocalDateTime date) {
+        int day = random.nextInt(date.getMonth().length(date.toLocalDate().isLeapYear())) + 1;
+        return LocalDateTime.of(date.getYear(), date.getMonth(), day, random.nextInt(24), random.nextInt(60));
     }
 }
