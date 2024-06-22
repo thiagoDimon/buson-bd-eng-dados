@@ -2,5 +2,5 @@
 logs
 *.log
 BusonDb
-
+*.csv
 .env

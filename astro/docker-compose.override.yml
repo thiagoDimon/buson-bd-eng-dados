@@ -34,6 +34,10 @@ services:
   postgres:
     extra_hosts:
       - "host.docker.internal:host-gateway"
+    volumes:
+        - ./BusonDB:/var/lib/postgresql/data
+        - ./docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
+    
 
   spark:
     image: docker.io/bitnami/spark:3.3.1
