@@ -1,9 +1,0 @@
-/* docs/css/extra.css */
-* {
-    --md-typeset-a-color: #FFDD57;
-    /* Cor vermelha para os links */
-}
-
-.md-header__ellipsis {
-    display: none;
-}
