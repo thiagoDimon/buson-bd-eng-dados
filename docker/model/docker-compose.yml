@@ -14,20 +14,20 @@ services:
           - ./BusonDB:/var/lib/postgresql/data
           - ./docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
 
-  minioserver:
-    image: minio/minio
-    ports:
-      - 9000:9000
-      - 9001:9001
-    environment:
-      MINIO_ROOT_USER: minioadmin
-      MINIO_ROOT_PASSWORD: minioadmin
-    container_name: minio
-    command: server /data --console-address ":9001"
+  # minioserver:
+  #   image: minio/minio
+  #   ports:
+  #     - 9000:9000
+  #     - 9001:9001
+  #   environment:
+  #     MINIO_ROOT_USER: minioadmin
+  #     MINIO_ROOT_PASSWORD: minioadmin
+  #   container_name: minio
+  #   command: server /data --console-address ":9001"
 
-  colab:
-    image: thiagodimon/colab:v2
-    ports:
-      - 8888:8888
-    env_file: .env
-    container_name: notebook
+  # colab:
+  #   image: thiagodimon/colab:v2
+  #   ports:
+  #     - 8888:8888
+  #   env_file: .env
+  #   container_name: notebook
