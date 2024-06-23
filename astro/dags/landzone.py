@@ -20,7 +20,7 @@ def landzone():
     def insert_csv():
         client = Minio(MIN_HOST, access_key=MIN_ACCESS_KEY, secret_key=MIN_SECRET_KEY, secure=False)
         
-        file_names = ['./dags/associacaos.csv', './dags/instituicaos.csv', './dags/cursos.csv', './dags/usuarios.csv', './dags/parametros.csv', './dags/pagamentos.csv']
+        file_names = ['./dags/csvs/associacaos.csv', './dags/csvs/instituicaos.csv', './dags/csvs/cursos.csv', './dags/csvs/usuarios.csv', './dags/csvs/parametros.csv', './dags/csvs/pagamentos.csv']
 
         for file_name in file_names:
             with open(file_name, 'w') as f:
@@ -42,24 +42,24 @@ def landzone():
                 cur.copy_expert(f'COPY {table_name} TO STDOUT WITH CSV HEADER', f)
 
         # Exportando as tabelas para arquivos CSV
-        export_to_csv('associacaos', './dags/associacaos.csv')
-        export_to_csv('instituicaos', './dags/instituicaos.csv')
-        export_to_csv('cursos', './dags/cursos.csv')
-        export_to_csv('usuarios', './dags/usuarios.csv')
-        export_to_csv('parametros', './dags/parametros.csv')
-        export_to_csv('pagamentos', './dags/pagamentos.csv')
+        export_to_csv('associacaos', './dags/csvs/associacaos.csv')
+        export_to_csv('instituicaos', './dags/csvs/instituicaos.csv')
+        export_to_csv('cursos', './dags/csvs/cursos.csv')
+        export_to_csv('usuarios', './dags/csvs/usuarios.csv')
+        export_to_csv('parametros', './dags/csvs/parametros.csv')
+        export_to_csv('pagamentos', './dags/csvs/pagamentos.csv')
 
         # Fechando o cursor e a conexão
         cur.close()
         conn.close()
         
         # Bucket | Nome do Arquivo | Caminho do Arquivo
-        client.fput_object('landing-zone', 'associacaos.csv', './dags/associacaos.csv')
-        client.fput_object('landing-zone', 'instituicaos.csv', './dags/instituicaos.csv')
-        client.fput_object('landing-zone', 'cursos.csv', './dags/cursos.csv')
-        client.fput_object('landing-zone', 'usuarios.csv', './dags/usuarios.csv')
-        client.fput_object('landing-zone', 'parametros.csv', './dags/parametros.csv')
-        client.fput_object('landing-zone', 'pagamentos.csv', './dags/pagamentos.csv')
+        client.fput_object('landing-zone', 'associacaos.csv', './dags/csvs/associacaos.csv')
+        client.fput_object('landing-zone', 'instituicaos.csv', './dags/csvs/instituicaos.csv')
+        client.fput_object('landing-zone', 'cursos.csv', './dags/csvs/cursos.csv')
+        client.fput_object('landing-zone', 'usuarios.csv', './dags/csvs/usuarios.csv')
+        client.fput_object('landing-zone', 'parametros.csv', './dags/csvs/parametros.csv')
+        client.fput_object('landing-zone', 'pagamentos.csv', './dags/csvs/pagamentos.csv')
 
     insert_csv()
 
