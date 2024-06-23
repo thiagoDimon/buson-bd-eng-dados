@@ -22,32 +22,27 @@ def bronze():
 
     @task
     def operacoes():
+        conf = (
+            pyspark.SparkConf()
+                .setAppName('app_name')
+                .set('spark.jars.packages', 'org.apache.hadoop:hadoop-aws:3.2.2,io.delta:delta-core_2.12:2.3.0')
+                .set('spark.sql.catalog.spark_catalog', 'org.apache.spark.sql.delta.catalog.DeltaCatalog')
+                .set("spark.hadoop.fs.s3a.access.key", MIN_ACCESS_KEY)
+                .set("spark.hadoop.fs.s3a.secret.key", MIN_SECRET_KEY)
+                .set("spark.hadoop.fs.s3a.endpoint", MIN_HOST)
+                .set("spark.hadoop.fs.s3a.connection.ssl.enabled", "false")
+                .set("spark.hadoop.fs.s3a.path.style.access", "true")
+                .set('spark.hadoop.fs.s3a.aws.credentials.provider', 'org.apache.hadoop.fs.s3a.SimpleAWSCredentialsProvider')
+                .set("spark.hadoop.fs.s3a.impl", "org.apache.hadoop.fs.s3a.S3AFileSystem")
+            )
 
-        # hadoop = requests.get("https://repo1.maven.org/maven2/org/apache/hadoop/hadoop-aws/3.2.2/hadoop-aws-3.2.2-.jar")
-        # delta = requests.get("https://repo1.maven.org/maven2/io/delta/delta-core_2.12/2.3.0/delta-core_2.12-2.3.0.jar")
+        spark = SparkSession.builder.config(conf=conf).getOrCreate()
 
-        # conf = (
-        #     pyspark.SparkConf()
-        #         .setAppName('app_name')
-        #         .set('spark.jars', "hadoop-aws-3.3.2.jar")
-        #         # .set('spark.jars', delta)
-        #         # .set('spark.sql.catalog.spark_catalog', 'org.apache.spark.sql.delta.catalog.DeltaCatalog')
-        #         # .set("spark.hadoop.fs.s3a.access.key", MIN_ACCESS_KEY)
-        #         # .set("spark.hadoop.fs.s3a.secret.key", MIN_SECRET_KEY)
-        #         # .set("spark.hadoop.fs.s3a.endpoint", MIN_HOST)
-        #         # .set("spark.hadoop.fs.s3a.connection.ssl.enabled", "false")
-        #         # .set("spark.hadoop.fs.s3a.path.style.access", "true")
-        #         # .set('spark.hadoop.fs.s3a.aws.credentials.provider', 'org.apache.hadoop.fs.s3a.SimpleAWSCredentialsProvider')
-        #         # .set("spark.hadoop.fs.s3a.impl", "org.apache.hadoop.fs.s3a.S3AFileSystem")
-        #     )
+        # builder = pyspark.sql.SparkSession.builder.appName("MyApp") \
+        #     .config("spark.sql.extensions", "io.delta.sql.DeltaSparkSessionExtension") \
+        #     .config("spark.sql.catalog.spark_catalog", "org.apache.spark.sql.delta.catalog.DeltaCatalog")
 
-        # spark = SparkSession.builder.config(conf=conf).getOrCreate()++
-
-        builder = pyspark.sql.SparkSession.builder.appName("MyApp") \
-            .config("spark.sql.extensions", "io.delta.sql.DeltaSparkSessionExtension") \
-            .config("spark.sql.catalog.spark_catalog", "org.apache.spark.sql.delta.catalog.DeltaCatalog")
-
-        spark = configure_spark_with_delta_pip(builder).getOrCreate()
+        # spark = configure_spark_with_delta_pip(builder).getOrCreate()
 
         # Lendo o arquivo carro.csv do bucket landing-zone
         df = spark.read.option("inferSchema", "true").option("header", "true").csv(f"s3a://landing-zone/carro.csv") 
