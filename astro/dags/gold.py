@@ -64,6 +64,9 @@ def gold():
         df_merged = df_pagamentos_final.join(df_usuarios_final, on="USUARIO_ID", how="left")
         df_final = df_merged.join(df_associacaos_final, on="ASSOCIACAO_ID", how="left")
 
+        # Salvando o modelo_eng_dados na camada gold
+        df_final.write.format("delta").save(f"s3a://gold/modelo_eng_dados/")
+
         # Parametros de conexão com o banco
         jdbc_url = "jdbc:postgresql://host.docker.internal:5432/postgres"
         connection_properties = {
@@ -73,7 +76,7 @@ def gold():
         }
 
         # Escrever o DataFrame no PostgreSQL criando uma nova tabela
-        df_final.write.jdbc(url=jdbc_url, table="public.obt", mode="overwrite", properties=connection_properties)
+        df_final.write.jdbc(url=jdbc_url, table="public.modelo_eng_dados", mode="overwrite", properties=connection_properties)
 
     operacoes()
 
