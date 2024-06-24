@@ -6,7 +6,42 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://github.com/thiagoDimon/buson-bd-eng-dados/configuracoesAirflow/</loc>
+         <lastmod>2024-06-24</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://github.com/thiagoDimon/buson-bd-eng-dados/configuracoesDocker/</loc>
+         <lastmod>2024-06-24</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://github.com/thiagoDimon/buson-bd-eng-dados/dashboard/</loc>
+         <lastmod>2024-06-24</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://github.com/thiagoDimon/buson-bd-eng-dados/executando/</loc>
+         <lastmod>2024-06-24</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://github.com/thiagoDimon/buson-bd-eng-dados/geracaoDados/</loc>
+         <lastmod>2024-06-24</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://github.com/thiagoDimon/buson-bd-eng-dados/inicializando/</loc>
+         <lastmod>2024-06-24</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://github.com/thiagoDimon/buson-bd-eng-dados/instalacao/</loc>
+         <lastmod>2024-06-24</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://github.com/thiagoDimon/buson-bd-eng-dados/preRequisitos/</loc>
          <lastmod>2024-06-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
