@@ -90,6 +90,10 @@ extra_css:
 
 nav:
   - Início: index.md
-  - Instalação: instalacao.md
-  - Váriaveis de Ambiente: variaveisAmbiente.md
+  - Pré-Requisitos: preRequisitos.md
+  - Configurações Docker: configuracoesDocker.md
   - Inicializando: inicializando.md
+  - Configurações Airflow: configuracoesAirflow.md
+  - Executando o Projeto: executando.md
+  - Geração de Dados: geracaoDados.md
+  - Dashboard: dashboard.md
