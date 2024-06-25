@@ -51,21 +51,46 @@ def gold():
         df_parametros_clone = df_parametros
         df_usuarios_clone = df_usuarios
 
-        # Selecionando as colunas necessárias
-        df_associacaos_final = df_associacaos_clone.select("ID", "NOME", "SITUACAO")
-        df_pagamentos_final = df_pagamentos_clone.select("ID", "DATA_VENCIMENTO", "VALOR", "MULTA", "SITUACAO", "USUARIO_ID")
-        df_usuarios_final = df_usuarios_clone.select("ID", "NOME", "SITUACAO", "DIAS_USO_TRANSPORTE", "ASSOCIACAO_ID")
+        # Selecionando as colunas necessárias e renomeando as colunas para evitar ambiguidades
+        df_associacaos_final = df_associacaos_clone.select("ID", "NOME", "SITUACAO") \
+            .withColumnRenamed("ID", "codigo_associacao") \
+            .withColumnRenamed("NOME", "nome_associacao") \
+            .withColumnRenamed("SITUACAO", "situacao_associacao")
 
-        # Renomeando colunas para evitar ambiguidades após a junção
-        df_associacaos_final = df_associacaos_final.withColumnRenamed("ID", "ASSOCIACAO_ID").withColumnRenamed("NOME", "NOME_ASSOCIACAO").withColumnRenamed("SITUACAO", "SITUACAO_ASSOCIACAO")
-        df_usuarios_final = df_usuarios_final.withColumnRenamed("ID", "USUARIO_ID").withColumnRenamed("NOME", "NOME_USUARIO").withColumnRenamed("SITUACAO", "SITUACAO_USUARIO")
+        df_pagamentos_final = df_pagamentos_clone.select("ID", "DATA_VENCIMENTO", "VALOR", "MULTA", "SITUACAO", "USUARIO_ID") \
+            .withColumnRenamed("ID", "codigo_pagamento") \
+            .withColumnRenamed("DATA_VENCIMENTO", "data_vencimento") \
+            .withColumnRenamed("VALOR", "valor") \
+            .withColumnRenamed("MULTA", "multa") \
+            .withColumnRenamed("SITUACAO", "situacao") \
+            .withColumnRenamed("USUARIO_ID", "codigo_usuario")
 
-        # Realizando as junções
-        df_merged = df_pagamentos_final.join(df_usuarios_final, on="USUARIO_ID", how="left")
-        df_final = df_merged.join(df_associacaos_final, on="ASSOCIACAO_ID", how="left")
+        df_usuarios_final = df_usuarios_clone.select("ID", "NOME", "SITUACAO", "DIAS_USO_TRANSPORTE", "ASSOCIACAO_ID") \
+            .withColumnRenamed("ID", "codigo_usuario") \
+            .withColumnRenamed("NOME", "nome_usuario") \
+            .withColumnRenamed("SITUACAO", "situacao_usuario") \
+            .withColumnRenamed("DIAS_USO_TRANSPORTE", "dias_uso_transporte") \
+            .withColumnRenamed("ASSOCIACAO_ID", "codigo_associacao")
+
+        # Realizando a junção dos dataframes
+        df_merged = df_pagamentos_final \
+            .join(df_usuarios_final, df_pagamentos_final["codigo_usuario"] == df_usuarios_final["codigo_usuario"], "inner") \
+            .join(df_associacaos_final, df_usuarios_final["codigo_associacao"] == df_associacaos_final["codigo_associacao"], "inner") \
+            .select(df_pagamentos_final["codigo_pagamento"],
+                    df_pagamentos_final["data_vencimento"],
+                    df_pagamentos_final["valor"],
+                    df_pagamentos_final["multa"],
+                    df_pagamentos_final["situacao"],
+                    df_usuarios_final["codigo_usuario"],
+                    df_usuarios_final["nome_usuario"],
+                    df_usuarios_final["situacao_usuario"],
+                    df_usuarios_final["dias_uso_transporte"],
+                    df_associacaos_final["codigo_associacao"],
+                    df_associacaos_final["nome_associacao"],
+                    df_associacaos_final["situacao_associacao"])
 
         # Salvando o modelo_eng_dados na camada gold
-        df_final.write.format("delta").save(f"s3a://gold/modelo_eng_dados/")
+        df_merged.write.format("delta").save(f"s3a://gold/modelo_eng_dados/")
 
         # Parametros de conexão com o banco
         jdbc_url = "jdbc:postgresql://host.docker.internal:5432/postgres"
@@ -76,7 +101,7 @@ def gold():
         }
 
         # Escrever o DataFrame no PostgreSQL criando uma nova tabela
-        df_final.write.jdbc(url=jdbc_url, table="public.modelo_eng_dados", mode="overwrite", properties=connection_properties)
+        df_merged.write.jdbc(url=jdbc_url, table="public.modelo_eng_dados", mode="overwrite", properties=connection_properties)
 
     operacoes()
 
