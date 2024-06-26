@@ -20,7 +20,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.26">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.27">
     
     
       
@@ -403,45 +403,45 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#minio_buckets" class="md-nav__link">
+  <a href="#bucketspy" class="md-nav__link">
     <span class="md-ellipsis">
-      minio_buckets:
+      buckets.py
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#landing-zone" class="md-nav__link">
+  <a href="#landing-zonepy" class="md-nav__link">
     <span class="md-ellipsis">
-      landing-zone:
+      landing-zone.py
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#bronze" class="md-nav__link">
+  <a href="#bronzepy" class="md-nav__link">
     <span class="md-ellipsis">
-      bronze
+      bronze.py
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#silver" class="md-nav__link">
+  <a href="#silverpy" class="md-nav__link">
     <span class="md-ellipsis">
-      silver
+      silver.py
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#gold" class="md-nav__link">
+  <a href="#goldpy" class="md-nav__link">
     <span class="md-ellipsis">
-      gold
+      gold.py
     </span>
   </a>
   
@@ -522,45 +522,45 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#minio_buckets" class="md-nav__link">
+  <a href="#bucketspy" class="md-nav__link">
     <span class="md-ellipsis">
-      minio_buckets:
+      buckets.py
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#landing-zone" class="md-nav__link">
+  <a href="#landing-zonepy" class="md-nav__link">
     <span class="md-ellipsis">
-      landing-zone:
+      landing-zone.py
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#bronze" class="md-nav__link">
+  <a href="#bronzepy" class="md-nav__link">
     <span class="md-ellipsis">
-      bronze
+      bronze.py
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#silver" class="md-nav__link">
+  <a href="#silverpy" class="md-nav__link">
     <span class="md-ellipsis">
-      silver
+      silver.py
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#gold" class="md-nav__link">
+  <a href="#goldpy" class="md-nav__link">
     <span class="md-ellipsis">
-      gold
+      gold.py
     </span>
   </a>
   
@@ -588,20 +588,182 @@
 <ul>
 <li>Executar as seguintes DAGS na ordem aqui fornecida: </li>
 </ul>
-<h2 id="minio_buckets">minio_buckets:</h2>
-<p>realiza a criação dos buckets landing-zone, bronze, silver e gold no nosso object storage 
-para persistir os nossos dados que serão utilizados para manipulação</p>
-<h2 id="landing-zone">landing-zone:</h2>
-<p>extrai as informações do banco de dados criado dentro do nosso container em formato csv para manipulação com o spark 
-e persiste nesta mesma camada este arquivos</p>
-<h2 id="bronze">bronze</h2>
-<p>realizar a leitura dos arquivos da camada landing-zone e manipulação de dados inserindo metadados como hora de processamento e arquivo de origem</p>
-<h2 id="silver">silver</h2>
-<p>realiza a leitura dos arquivos persistidos em formato delta na bronze e realiza manipulações nos arquivos 
-padronizando nomes de tabelas e deletando dados desnecessários</p>
-<h2 id="gold">gold</h2>
-<p>realiza a leitura dos arquivos persistidos em formato delta na silver e realiza manipulações dos dados a fim de 
-disponibilizar os dados tratados no modelo One Big Table, encaminhando e persistindo novamente no banco de dados para consumo do Power BI</p>
+<h2 id="bucketspy">buckets.py</h2>
+<p>O MinIO Buckets realiza a criação dos Buckets "landing-zone", "bronze", "silver" e "gold" no Object Storage.
+Dessa forma, os dados vão ser persistidos após manipulados.
+ <div class="highlight"><pre><span></span><code>def create_bucket():
+       client = Minio(MIN_HOST, access_key=MIN_ACCESS_KEY, secret_key=MIN_SECRET_KEY, secure=False)
+       minio_buckets = [&quot;landing-zone&quot;, &quot;bronze&quot;, &quot;silver&quot;, &quot;gold&quot;]
+       for bucket in minio_buckets:
+           client.make_bucket(bucket)
+
+   create_bucket()
+</code></pre></div></p>
+<h2 id="landing-zonepy">landing-zone.py</h2>
+<p>Cria conexão com o Postgres e extrai os dados em formato CSV. 
+ <div class="highlight"><pre><span></span><code>file_names = [&#39;./dags/csv/associacaos.csv&#39;, &#39;./dags/csv/instituicaos.csv&#39;, &#39;./dags/csv/cursos.csv&#39;, &#39;./dags/csv/usuarios.csv&#39;, &#39;./dags/csv/parametros.csv&#39;, &#39;./dags/csv/pagamentos.csv&#39;]
+
+       for file_name in file_names:
+           with open(file_name, &#39;w&#39;) as f:
+               pass
+
+       conn = psycopg2.connect(
+           dbname=&quot;postgres&quot;,
+           user=&quot;postgres&quot;,
+           password=&quot;postgres&quot;,
+           host=&quot;host.docker.internal&quot;,
+           port=&quot;5432&quot;
+       )
+
+       cur = conn.cursor()
+
+       # Função para exportar dados para CSV
+       def export_to_csv(table_name, file_name):
+           with open(file_name, &#39;w&#39;) as f:
+               cur.copy_expert(f&#39;COPY {table_name} TO STDOUT WITH CSV HEADER&#39;, f)
+
+       # Exportando as tabelas para arquivos CSV
+       export_to_csv(&#39;associacaos&#39;, &#39;./dags/csv/associacaos.csv&#39;)
+       export_to_csv(&#39;instituicaos&#39;, &#39;./dags/csv/instituicaos.csv&#39;)
+       export_to_csv(&#39;cursos&#39;, &#39;./dags/csv/cursos.csv&#39;)
+       export_to_csv(&#39;usuarios&#39;, &#39;./dags/csv/usuarios.csv&#39;)
+       export_to_csv(&#39;parametros&#39;, &#39;./dags/csv/parametros.csv&#39;)
+       export_to_csv(&#39;pagamentos&#39;, &#39;./dags/csv/pagamentos.csv&#39;)
+
+       # Fechando o cursor e a conexão
+       cur.close()
+       conn.close()
+</code></pre></div>
+ Por ser a Landing-Zone, esses dados serão persistidos em seu formato bruto, para serem manipulados nas camadas seguintes.
+ <div class="highlight"><pre><span></span><code># Bucket | Nome do Arquivo | Caminho do Arquivo
+       client.fput_object(&#39;landing-zone&#39;, &#39;associacaos.csv&#39;, &#39;./dags/csv/associacaos.csv&#39;)
+       client.fput_object(&#39;landing-zone&#39;, &#39;instituicaos.csv&#39;, &#39;./dags/csv/instituicaos.csv&#39;)
+       client.fput_object(&#39;landing-zone&#39;, &#39;cursos.csv&#39;, &#39;./dags/csv/cursos.csv&#39;)
+       client.fput_object(&#39;landing-zone&#39;, &#39;usuarios.csv&#39;, &#39;./dags/csv/usuarios.csv&#39;)
+       client.fput_object(&#39;landing-zone&#39;, &#39;parametros.csv&#39;, &#39;./dags/csv/parametros.csv&#39;)
+       client.fput_object(&#39;landing-zone&#39;, &#39;pagamentos.csv&#39;, &#39;./dags/csv/pagamentos.csv&#39;)
+</code></pre></div></p>
+<h2 id="bronzepy">bronze.py</h2>
+<p>A camada Bronze utiliza Spark para ler e manipular os dados da landing-zone.
+ <div class="highlight"><pre><span></span><code># Lendo o arquivo do bucket landing-zone
+   df_associacaos = spark.read.option(&quot;inferSchema&quot;, &quot;true&quot;).option(&quot;header&quot;, &quot;true&quot;).csv(f&quot;s3a://landing-zone/associacaos.csv&quot;) 
+   df_cursos = spark.read.option(&quot;inferSchema&quot;, &quot;true&quot;).option(&quot;header&quot;, &quot;true&quot;).csv(f&quot;s3a://landing-zone/cursos.csv&quot;) 
+   df_instituicaos = spark.read.option(&quot;inferSchema&quot;, &quot;true&quot;).option(&quot;header&quot;, &quot;true&quot;).csv(f&quot;s3a://landing-zone/instituicaos.csv&quot;) 
+   df_pagamentos = spark.read.option(&quot;inferSchema&quot;, &quot;true&quot;).option(&quot;header&quot;, &quot;true&quot;).csv(f&quot;s3a://landing-zone/pagamentos.csv&quot;) 
+   df_parametros = spark.read.option(&quot;inferSchema&quot;, &quot;true&quot;).option(&quot;header&quot;, &quot;true&quot;).csv(f&quot;s3a://landing-zone/parametros.csv&quot;) 
+   df_usuarios = spark.read.option(&quot;inferSchema&quot;, &quot;true&quot;).option(&quot;header&quot;, &quot;true&quot;).csv(f&quot;s3a://landing-zone/usuarios.csv&quot;) 
+</code></pre></div>
+ Para cada arquivo CSV, serão adicionadas novas colunas de metadados, marcando o momento do processamento, 
+ e o nome do arquivo de origem.
+ <div class="highlight"><pre><span></span><code># Adicionando metadados de data e hora de processamento e nome do arquivo de origem
+   df_associacaos = df_associacaos.withColumn(&quot;data_hora_bronze&quot;, current_timestamp()).withColumn(&quot;nome_arquivo&quot;, lit(&quot;associacaos.csv&quot;))
+   df_cursos = df_cursos.withColumn(&quot;data_hora_bronze&quot;, current_timestamp()).withColumn(&quot;nome_arquivo&quot;, lit(&quot;cursos.csv&quot;))
+   df_instituicaos = df_instituicaos.withColumn(&quot;data_hora_bronze&quot;, current_timestamp()).withColumn(&quot;nome_arquivo&quot;, lit(&quot;instituicaos.csv&quot;))
+   df_pagamentos = df_pagamentos.withColumn(&quot;data_hora_bronze&quot;, current_timestamp()).withColumn(&quot;nome_arquivo&quot;, lit(&quot;pagamentos.csv&quot;))
+   df_parametros = df_parametros.withColumn(&quot;data_hora_bronze&quot;, current_timestamp()).withColumn(&quot;nome_arquivo&quot;, lit(&quot;parametros.csv&quot;))
+   df_usuarios = df_usuarios.withColumn(&quot;data_hora_bronze&quot;, current_timestamp()).withColumn(&quot;nome_arquivo&quot;, lit(&quot;usuarios.csv&quot;))
+</code></pre></div>
+ Após esse processo, os dados são persistidos na camada Bronze, já em formato Delta.
+ <div class="highlight"><pre><span></span><code># Salvando arquivo em formato delta no bucket bronze
+   df_associacaos.write.format(&quot;delta&quot;).save(f&quot;s3a://bronze/associacaos&quot;)
+   df_cursos.write.format(&quot;delta&quot;).save(f&quot;s3a://bronze/cursos&quot;)
+   df_instituicaos.write.format(&quot;delta&quot;).save(f&quot;s3a://bronze/instituicaos&quot;)
+   df_pagamentos.write.format(&quot;delta&quot;).save(f&quot;s3a://bronze/pagamentos&quot;)
+   df_parametros.write.format(&quot;delta&quot;).save(f&quot;s3a://bronze/parametros&quot;)
+   df_usuarios.write.format(&quot;delta&quot;).save(f&quot;s3a://bronze/usuarios&quot;)
+</code></pre></div></p>
+<h2 id="silverpy">silver.py</h2>
+<p>A camada Silver utiliza Spark para ler e manipular os dados da camada Bronze.
+ <div class="highlight"><pre><span></span><code>spark = SparkSession.builder.config(conf=conf).getOrCreate()
+
+# Lendo os arquivos da camada bronze
+   df_associacaos = spark.read.format(&quot;delta&quot;).load(f&quot;s3a://bronze/associacaos/&quot;)
+   df_cursos = spark.read.format(&quot;delta&quot;).load(f&quot;s3a://bronze/cursos/&quot;)
+   df_instituicaos = spark.read.format(&quot;delta&quot;).load(f&quot;s3a://bronze/instituicaos/&quot;)
+   df_pagamentos = spark.read.format(&quot;delta&quot;).load(f&quot;s3a://bronze/pagamentos/&quot;)
+   df_parametros = spark.read.format(&quot;delta&quot;).load(f&quot;s3a://bronze/parametros/&quot;)
+   df_usuarios = spark.read.format(&quot;delta&quot;).load(f&quot;s3a://bronze/usuarios/&quot;)
+</code></pre></div>
+ Criação dos metadados (colunas) referentes a data de processamento dos dados, e nome do arquivo de origem.
+ <div class="highlight"><pre><span></span><code># Adicionando metadados de data e hora de processamento e nome do arquivo de origem
+   df_associacaos = df_associacaos.withColumn(&quot;data_hora_silver&quot;, current_timestamp()).withColumn(&quot;nome_arquivo&quot;, lit(&quot;associacaos&quot;))
+   df_cursos = df_cursos.withColumn(&quot;data_hora_silver&quot;, current_timestamp()).withColumn(&quot;nome_arquivo&quot;, lit(&quot;cursos&quot;))
+   df_instituicaos = df_instituicaos.withColumn(&quot;data_hora_silver&quot;, current_timestamp()).withColumn(&quot;nome_arquivo&quot;, lit(&quot;instituicaos&quot;))
+   df_pagamentos = df_pagamentos.withColumn(&quot;data_hora_silver&quot;, current_timestamp()).withColumn(&quot;nome_arquivo&quot;, lit(&quot;pagamentos&quot;))
+   df_parametros = df_parametros.withColumn(&quot;data_hora_silver&quot;, current_timestamp()).withColumn(&quot;nome_arquivo&quot;, lit(&quot;parametros&quot;))
+   df_usuarios = df_usuarios.withColumn(&quot;data_hora_silver&quot;, current_timestamp()).withColumn(&quot;nome_arquivo&quot;, lit(&quot;usuarios&quot;))
+</code></pre></div>
+ Após a criação dos metadados, é feita padronização dos nomes das tabelas, e exclusão de tabelas desnecessárias.
+ <div class="highlight"><pre><span></span><code>df_cursos = (
+   df_cursos
+   .withColumnRenamed(&quot;id&quot;                     , &quot;ID&quot;)
+   .withColumnRenamed(&quot;nome&quot;                   , &quot;NOME&quot;)
+   .withColumnRenamed(&quot;situacao&quot;               , &quot;SITUACAO&quot;)
+   .withColumnRenamed(&quot;instituicao_id&quot;         , &quot;INSTITUICAO_ID&quot;)
+   .drop(&quot;created_at&quot;)
+   .drop(&quot;updated_at&quot;)
+   .drop(&quot;data_hora_bronze&quot;)
+   .withColumnRenamed(&quot;nome_arquivo&quot;           , &quot;NOME_ARQUIVO&quot;)
+   .withColumnRenamed(&quot;data_hora_silver&quot;       , &quot;DATA_HORA_SILVER&quot;)
+   )
+</code></pre></div>
+ As novas modificações serão persistidas na camada Silver, já no formato Delta.
+ <div class="highlight"><pre><span></span><code># Salvando os arquivos na camada silver
+   df_associacaos.write.format(&quot;delta&quot;).save(f&quot;s3a://silver/associacaos/&quot;)
+   df_cursos.write.format(&quot;delta&quot;).save(f&quot;s3a://silver/cursos/&quot;)
+   df_instituicaos.write.format(&quot;delta&quot;).save(f&quot;s3a://silver/instituicaos/&quot;)
+   df_pagamentos.write.format(&quot;delta&quot;).save(f&quot;s3a://silver/pagamentos/&quot;)
+   df_parametros.write.format(&quot;delta&quot;).save(f&quot;s3a://silver/parametros/&quot;)
+   df_usuarios.write.format(&quot;delta&quot;).save(f&quot;s3a://silver/usuarios/&quot;)
+</code></pre></div></p>
+<h2 id="goldpy">gold.py</h2>
+<p>A camada Gold utiliza Spark para ler os dados da camada Silver.
+ <div class="highlight"><pre><span></span><code>spark = SparkSession.builder.config(conf=conf).getOrCreate()
+
+   # Lendo os arquivos da camada silver
+   df_associacaos = spark.read.format(&quot;delta&quot;).load(f&quot;s3a://silver/associacaos/&quot;)
+   df_cursos = spark.read.format(&quot;delta&quot;).load(f&quot;s3a://silver/cursos/&quot;)
+   df_instituicaos = spark.read.format(&quot;delta&quot;).load(f&quot;s3a://silver/instituicaos/&quot;)
+   df_pagamentos = spark.read.format(&quot;delta&quot;).load(f&quot;s3a://silver/pagamentos/&quot;)
+   df_parametros = spark.read.format(&quot;delta&quot;).load(f&quot;s3a://silver/parametros/&quot;)
+   df_usuarios = spark.read.format(&quot;delta&quot;).load(f&quot;s3a://silver/usuarios/&quot;) 
+</code></pre></div>
+ Serão feitas modificações em colunas específicas dos dataframes, para que não haja ambiguidade no resultado.
+ <div class="highlight"><pre><span></span><code># Selecionando as colunas necessárias e renomeando as colunas para evitar ambiguidades
+   df_associacaos_final = df_associacaos_clone.select(&quot;ID&quot;, &quot;NOME&quot;, &quot;SITUACAO&quot;) \
+       .withColumnRenamed(&quot;ID&quot;, &quot;codigo_associacao&quot;) \
+       .withColumnRenamed(&quot;NOME&quot;, &quot;nome_associacao&quot;) \
+       .withColumnRenamed(&quot;SITUACAO&quot;, &quot;situacao_associacao&quot;)
+
+   df_pagamentos_final = df_pagamentos_clone.select(&quot;ID&quot;, &quot;DATA_VENCIMENTO&quot;, &quot;VALOR&quot;, &quot;MULTA&quot;, &quot;SITUACAO&quot;, &quot;USUARIO_ID&quot;) \
+       .withColumnRenamed(&quot;ID&quot;, &quot;codigo_pagamento&quot;) \
+       .withColumnRenamed(&quot;DATA_VENCIMENTO&quot;, &quot;data_vencimento&quot;) \
+       .withColumnRenamed(&quot;VALOR&quot;, &quot;valor&quot;) \
+       .withColumnRenamed(&quot;MULTA&quot;, &quot;multa&quot;) \
+       .withColumnRenamed(&quot;SITUACAO&quot;, &quot;situacao&quot;) \
+       .withColumnRenamed(&quot;USUARIO_ID&quot;, &quot;codigo_usuario&quot;)
+</code></pre></div>
+ Após manipular as colunas, os dataframes serão agregados em um único dataframe.
+ <div class="highlight"><pre><span></span><code># Realizando a junção dos dataframes
+   df_merged = df_pagamentos_final \
+       .join(df_usuarios_final, df_pagamentos_final[&quot;codigo_usuario&quot;] == df_usuarios_final[&quot;codigo_usuario&quot;], &quot;inner&quot;) \
+       .join(df_associacaos_final, df_usuarios_final[&quot;codigo_associacao&quot;] == df_associacaos_final[&quot;codigo_associacao&quot;], &quot;inner&quot;) \
+       .select(df_pagamentos_final[&quot;codigo_pagamento&quot;],
+               df_pagamentos_final[&quot;data_vencimento&quot;],
+               df_pagamentos_final[&quot;valor&quot;],
+               df_pagamentos_final[&quot;multa&quot;],
+               df_pagamentos_final[&quot;situacao&quot;],
+               df_usuarios_final[&quot;codigo_usuario&quot;],
+               df_usuarios_final[&quot;nome_usuario&quot;],
+               df_usuarios_final[&quot;situacao_usuario&quot;],
+               df_usuarios_final[&quot;dias_uso_transporte&quot;],
+               df_associacaos_final[&quot;codigo_associacao&quot;],
+               df_associacaos_final[&quot;nome_associacao&quot;],
+               df_associacaos_final[&quot;situacao_associacao&quot;])
+</code></pre></div>
+ O resultado da junção dos dataframes será persistido na camada Gold
+ <div class="highlight"><pre><span></span><code>df_merged.write.format(&quot;delta&quot;).save(f&quot;s3a://gold/modelo_eng_dados/&quot;)
+</code></pre></div></p>
 <h1 id="_1"></h1>
 <h1 id="_2"></h1>
 <p>Nessa parte descrita acima, acredito que pode ser colocado junto os comandos disponiveis nos arquivos, buckets.py, landzone.py, bronze.py, 

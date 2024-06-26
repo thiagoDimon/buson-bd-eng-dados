@@ -20,7 +20,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.26">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.27">
     
     
       
@@ -306,17 +306,6 @@
         
       
       
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Configurações Docker
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -326,43 +315,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Índice">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Índice
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#dockerfile" class="md-nav__link">
-    <span class="md-ellipsis">
-      Dockerfile
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#docker-compose-override" class="md-nav__link">
-    <span class="md-ellipsis">
-      Docker Compose Override
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
       
     </li>
   
@@ -488,32 +440,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Índice
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#dockerfile" class="md-nav__link">
-    <span class="md-ellipsis">
-      Dockerfile
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#docker-compose-override" class="md-nav__link">
-    <span class="md-ellipsis">
-      Docker Compose Override
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -531,17 +457,19 @@
 
 
 <h1 id="configuracoes-docker">Configurações Docker</h1>
-<h2 id="dockerfile">Dockerfile</h2>
-<pre><code>- Neste arquivo foi necessário realizar a instalação do manipulador do minio
-- Instalação do providers do apache spark para realizar a conexão com o airflow
-- Instalação da biblioteca pandas para manipulação dos dataframes
-- Instalação do Java e configuração das variáveis de ambiente para funcionamento do SPARK
-</code></pre>
-<h2 id="docker-compose-override">Docker Compose Override</h2>
-<pre><code>- Realizado a inserção da imagem do minio e configuração da subnet para que o airflow consiga lhe enxergar
-- Realizado a inserção da imagem do cluster do spark e configuração da subnet para que o airflow consiga lhe enxergar
-- Na imagem do postgres adicionado os volumes do banco de dados buson_bd para realizar a criação das tabelas e inserção automática dos dados de exemplo
-</code></pre>
+<h1 id="dockerfile">Dockerfile</h1>
+<ul>
+<li>Neste arquivo foi necessário realizar a instalação do manipulador do MinIO.</li>
+<li>Instalação do provider do Apache Spark para realizar a conexão com o Airflow.</li>
+<li>Instalação da biblioteca pandas para manipulação dos dataframes.</li>
+<li>Instalação do Java e configuração das variáveis de ambiente para o funcionamento do Spark.</li>
+</ul>
+<h1 id="docker-compose-override">Docker Compose Override</h1>
+<ul>
+<li>Realizado a inserção da imagem do MinIO e configuração da subnet para que o Airflow consiga enxergá-lo.</li>
+<li>Realizado a inserção da imagem do cluster do Spark e configuração da subnet para que o Airflow consiga enxergá-lo.</li>
+<li>Na imagem do PostgreSQL, adicionados os volumes do banco de dados <code>buson_bd</code> para realizar a criação das tabelas e inserção automática dos dados de exemplo.</li>
+</ul>
 
 
 

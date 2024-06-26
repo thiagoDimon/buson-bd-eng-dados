@@ -20,7 +20,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.26">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.27">
     
     
       
@@ -286,6 +286,17 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Pré-Requisitos
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -295,6 +306,43 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ferramentas-necessarias" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ferramentas Necessárias
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ferramentas-adicionais-opcional" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ferramentas Adicionais (Opcional)
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -440,6 +488,32 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ferramentas-necessarias" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ferramentas Necessárias
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ferramentas-adicionais-opcional" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ferramentas Adicionais (Opcional)
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -457,19 +531,75 @@
 
 
 <h1 id="pre-requisitos-para-o-projeto">Pré-Requisitos para o Projeto</h1>
+<p>Para garantir o funcionamento adequado do projeto, certifique-se de que todos os seguintes pré-requisitos estão atendidos e instalados:</p>
+<h2 id="ferramentas-necessarias">Ferramentas Necessárias</h2>
+<ol>
+<li>
+<p><strong>SPARK 3.3.1</strong></p>
 <ul>
-<li>SPARK 3.3.1</li>
-<li>DELTA 2.3.0</li>
-<li>HADOOP 3.2.2</li>
-<li>MINIO OBJECT STORAGE (LUGAR PARA SALVAR NOS ARQUIVOS)</li>
-<li>ASTRO CLI (INTERFACE DE LINHA DE COMANDOS PARA ORQUESTRAÇÃO DE DADOS)</li>
-<li>AIRFLOW (FERRAMENTA DE ORQUESTRAÇÃO)</li>
-<li>DOCKER (FERRAMENTA DAS IMAGENS UTILIZADOS PARA SUBIR O AIRFLOW, MINIO E CLUSTER DO SPARK)</li>
-<li>GIT (PARA REALIZAR O CLONE DO PROJETO)</li>
+<li>Utilizado para o processamento distribuído de dados.</li>
 </ul>
-<p>Foi utilizado, porém nao tem necessidade 
-- Java
-- Faker</p>
+</li>
+<li>
+<p><strong>DELTA 2.3.0</strong></p>
+<ul>
+<li>Formato de armazenamento que permite a leitura e escrita de dados de forma eficiente com o Apache Spark.</li>
+</ul>
+</li>
+<li>
+<p><strong>HADOOP 3.2.2</strong></p>
+<ul>
+<li>Framework necessário para o funcionamento do Spark e Delta.</li>
+</ul>
+</li>
+<li>
+<p><strong>MINIO OBJECT STORAGE</strong></p>
+<ul>
+<li>Armazenamento de objetos onde os arquivos serão salvos.</li>
+</ul>
+</li>
+<li>
+<p><strong>ASTRO CLI</strong></p>
+<ul>
+<li>Interface de linha de comando para orquestração de dados.</li>
+</ul>
+</li>
+<li>
+<p><strong>AIRFLOW</strong></p>
+<ul>
+<li>Ferramenta de orquestração de workflows para agendar e monitorar os pipelines de dados.</li>
+</ul>
+</li>
+<li>
+<p><strong>DOCKER</strong></p>
+<ul>
+<li>Ferramenta para criar e gerenciar containers, utilizada para subir o Airflow, MinIO e o cluster do Spark.</li>
+</ul>
+</li>
+</ol>
+<h2 id="ferramentas-adicionais-opcional">Ferramentas Adicionais (Opcional)</h2>
+<p>As seguintes ferramentas foram utilizadas durante o desenvolvimento do projeto, mas não são necessárias para a execução:</p>
+<ul>
+<li>
+<p><strong>GIT</strong></p>
+<ul>
+<li>Sistema de controle de versão utilizado para clonar o repositório do projeto.</li>
+</ul>
+</li>
+<li>
+<p><strong>Java</strong></p>
+<ul>
+<li>Utilizado para algumas dependências do Spark.</li>
+</ul>
+</li>
+<li>
+<p><strong>Faker</strong></p>
+<ul>
+<li>Biblioteca para geração de dados falsos para testes e desenvolvimento.</li>
+</ul>
+</li>
+</ul>
+<p>Certifique-se de que todas as ferramentas necessárias estão instaladas e configuradas corretamente antes de iniciar o projeto.</p>
 
 
 
