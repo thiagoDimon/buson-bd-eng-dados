@@ -2,46 +2,32 @@
 
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
-O projeto buson se baseia em um banco de dados dimensional criado na matéria de ia, sendo usado como base para criar uma grande massa de dados e fazer uma ingestão de dados usando o modelo medalhão para no final visualizar os dados em um bi.
+O projeto BusON se baseia em um banco de dados dimensional criado na matéria de IA, sendo usado como base para criar uma grande massa de dados e fazer uma ingestão de dados usando o modelo medalhão para no final visualizar os dados em um BI.
 
 ## Começando
 
 Essas instruções permitirão que você obtenha uma cópia do projeto em operação na sua máquina local para fins de desenvolvimento e teste.
 
-Consulte **[Implantação](#-implanta%C3%A7%C3%A3o)** para saber como implantar o projeto.
+Consulte **[Documentação MkDocs](https://thiagodimon.github.io/buson-bd-eng-dados/)** para saber como implantar o projeto.
 
 ## Desenho de Arquitetura
 
-Coloqui uma imagem do seu projeto, como no exemplo abaixo:
-
 ![image](https://github.com/jlsilva01/projeto-ed-satc/assets/484662/541de6ab-03fa-49b3-a29f-dec8857360c1)
-
 
 ## Pré-requisitos
 
-De que coisas você precisa para instalar o software e como instalá-lo?
+* **Docker: ** Necessário ter [Docker](https://www.docker.com/products/docker-desktop/) instalado na máquina.
+* **Git:** Necessário ter [Git](https://git-scm.com) instalado na máquina.
 
-```
-Dar exemplos
-```
+## Visão Geral
 
-## Instalação
-
-Uma série de exemplos passo-a-passo que informam o que você deve executar para ter um ambiente de desenvolvimento em execução.
-
-Diga como essa etapa será:
-
-```
-Dar exemplos
-```
-
-E repita:
-
-```
-Até finalizar
-```
-
-Termine com um exemplo de como obter dados do sistema ou como usá-los para uma pequena demonstração.
+* A massa de dados será gerada através da biblioteca Faker, em Java.
+* Postgres foi utilizado parar armazenar esses dados, utilizando script Python. 
+* O Spark será utilizado com o Airflow para realizar leitura e modificação dos dados do Postgres, que serão extraídos em formato de arquivo CSV.
+* O MinIO é utilizado para criar Buckets, para possibilitar a persistencia dos dados em Object Storage.
+* O Bucket do MinIO irá criar as 4 camadas da pipeline: Landing-Zone, Bronze, Silver e Gold.
+* Na Landing-Zone, os dados serão extraídos do banco e persistidos em seu formato bruto.
+* Na Bronze, os dados serão extraídos da Landing-Zone e 
 
 ## Implantação
 
@@ -49,11 +35,13 @@ Adicione notas adicionais sobre como implantar isso em um sistema ativo
 
 ## Ferramentas utilizadas
 
-Mencione as ferramentas que você usou para criar seu projeto
-
-* Ferramenta 1 + link - Breve descrição
-* Ferramenta 2 + link - Breve descrição
-* Ferramenta 3 + link - Breve descrição
+* [Apache Airflow](https://airflow.apache.org) - Orquestração de Fluxos de Trabalho
+* [Apache Spark](https://spark.apache.org) - Processamento Distribuído de Dados
+* [Docker](https://www.docker.com/products/docker-desktop/) - Contêinerização de Aplicações
+* [MinIO](https://min.io) - Armazenamento de Objetos Escalável
+* [MkDocs](https://www.mkdocs.org) - Documentação
+* [Postgres](https://www.postgresql.org) - Banco de Dados Relacional
+* [Power BI](https://www.microsoft.com/pt-br/power-platform/products/power-bi/landing/free-account?ef_id=_k_Cj0KCQjwj9-zBhDyARIsAERjds3j5ypF-nLzY9DWq1WYBWyktjocg-5a4B2SoYNIfRIwYLMGAQI5GDQaAgZWEALw_wcB_k_&OCID=AIDcmmk4cy2ahx_SEM__k_Cj0KCQjwj9-zBhDyARIsAERjds3j5ypF-nLzY9DWq1WYBWyktjocg-5a4B2SoYNIfRIwYLMGAQI5GDQaAgZWEALw_wcB_k_&gad_source=1&gclid=Cj0KCQjwj9-zBhDyARIsAERjds3j5ypF-nLzY9DWq1WYBWyktjocg-5a4B2SoYNIfRIwYLMGAQI5GDQaAgZWEALw_wcB) - Visualização e Análise dos Dados Processados
 
 ## Colaboração
 
@@ -80,10 +68,12 @@ Fale sobre a versão e o controle de versões para o projeto. Para as versões d
 
 ## Autores
 
-Mencione todos aqueles que ajudaram a levantar o projeto desde o seu início
-
-* **Aluno 1** - *Trabalho Inicial* - [(https://github.com/linkParaPerfil)](https://github.com/linkParaPerfil)
-* **Aluno 2** - *Documentação* - [https://github.com/linkParaPerfil](https://github.com/linkParaPerfil)
+* **Bruno Dimon** - *Documentação* - [Bruno Dimon](https://github.com/BrunoDimon)
+* **Douglas Kuerten** - *Documentação* - [Douglas Kuerten](https://github.com/DouglasKuerten)
+* **Gustavo Taufembach Bett** - *Documentação* - [Gustavo Taufembach Bett](https://github.com/GustavoTBett)
+* **Lucas Zanoni** - *Documentação* - [Lucas Zanoni](https://github.com/Castrozan)
+* **Miguel Cimolin** - *Documentação* - [Miguel Cimolin](https://github.com/miguelcimolin)
+* **Pedro Guedes** - *Documentação* - [Pedro Guedes](https://github.com/Pedroguedez)
 
 Você também pode ver a lista de todos os [colaboradores](https://github.com/usuario/projeto/colaboradores) que participaram deste projeto.
 
