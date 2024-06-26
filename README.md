@@ -12,7 +12,7 @@ Consulte **[Documentação MkDocs](https://thiagodimon.github.io/buson-bd-eng-da
 
 ## Desenho de Arquitetura
 
-![image](https://github.com/jlsilva01/projeto-ed-satc/assets/484662/541de6ab-03fa-49b3-a29f-dec8857360c1)
+![image](https://github.com/thiagoDimon/buson-bd-eng-dados/assets/69534716/e9c197ca-1acc-4dde-8e3c-57d17957c252)
 
 ## Pré-requisitos
 
