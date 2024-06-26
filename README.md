@@ -21,13 +21,17 @@ Consulte **[Documentação MkDocs](https://thiagodimon.github.io/buson-bd-eng-da
 
 ## Visão Geral
 
-* A massa de dados será gerada através da biblioteca Faker, em Java.
-* Postgres foi utilizado parar armazenar esses dados, utilizando script Python. 
-* O Spark será utilizado com o Airflow para realizar leitura e modificação dos dados do Postgres, que serão extraídos em formato de arquivo CSV.
-* O MinIO é utilizado para criar Buckets, para possibilitar a persistencia dos dados em Object Storage.
-* O Bucket do MinIO irá criar as 4 camadas da pipeline: Landing-Zone, Bronze, Silver e Gold.
-* Na Landing-Zone, os dados serão extraídos do banco e persistidos em seu formato bruto.
-* Na Bronze, os dados serão extraídos da Landing-Zone e 
+* O Apache Airflow é nossa plataforma de gerenciamento de fluxo de trabalho, responsável por orquestrar todas as tarefas na nossa pipeline de dados e transformações necessárias, até a disponibilização em uma interface de análise de dados.
+* A massa de dados será gerada usando a biblioteca Faker em Java.
+* Postgres foi utilizado para armazenar esses dados, utilizando um script Python.
+* O Spark será usado junto com o Airflow para ler e manipular os dados do Postgres, que serão extraídos no formato de arquivo CSV.
+* O MinIO é usado para criar Buckets, permitindo a persistência dos dados em Object Storage.
+* O Bucket do MinIO criará as 4 camadas da pipeline: Landing-Zone, Bronze, Silver e Gold.
+* Na Landing-Zone, os dados serão extraídos do banco e persistidos em seu formato bruto, em CSV.
+* Na Bronze, os dados serão extraídos da Landing-Zone e colunas de metadados serão criadas. As alterações serão persistidas na camada Bronze, em CSV.
+* Na Silver, os dados serão extraídos da Bronze e colunas de metadados serão criadas. Os nomes das colunas serão padronizados, e colunas desnecessárias serão descartadas. As alterações serão persistidas na camada Silver, em CSV.
+* Na Gold, os dados serão extraídos da Silver e colunas de metadados serão criadas. O nome de algumas colunas será alterado para evitar ambiguidades nos resultados. Após isso, os dataframes serão unificados em apenas um. Este dataframe final será persistido na camada Gold, em CSV.
+* O Power BI será responsável pela apresentação dos dados em Dashboards.
 
 ## Implantação
 
@@ -83,6 +87,6 @@ Este projeto está sob a licença (sua licença) - veja o arquivo [LICENSE](http
 
 ## Referências
 
-Cite aqui todas as referências utilizadas neste projeto, pode ser outros repositórios, livros, artigos de internet etc.
-
-
+[Dataway BR](https://www.youtube.com/watch?v=eOrWEsZIfKU)
+[Dremio](https://www.youtube.com/watch?v=X3wfVaSQS_c)
+[Chat-GPT](https://openai.com/chatgpt/)
