@@ -16,7 +16,7 @@ Consulte **[Documentação MkDocs](https://thiagodimon.github.io/buson-bd-eng-da
 
 ## Pré-requisitos
 
-* **Docker: ** Necessário ter [Docker](https://www.docker.com/products/docker-desktop/) instalado na máquina.
+* **Docker:** Necessário ter [Docker](https://www.docker.com/products/docker-desktop/) instalado na máquina.
 * **Git:** Necessário ter [Git](https://git-scm.com) instalado na máquina.
 
 ## Visão Geral
