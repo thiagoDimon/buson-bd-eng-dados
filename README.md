@@ -44,9 +44,9 @@ Fale sobre a versão e o controle de versões para o projeto. Para as versões d
 
 ## Autores
 
-* **Aluno 1** - *Documentação* - [Bruno Dimon](https://github.com/BrunoDimon)
+* **Aluno 1** - *Power BI* - [Bruno Dimon](https://github.com/BrunoDimon)
 * **Aluno 2** - *Documentação* - [Douglas Kuerten](https://github.com/DouglasKuerten)
-* **Aluno 3** - *Documentação* - [Gustavo Taufembach Bett](https://github.com/GustavoTBett)
+* **Aluno 3** - *Ingestão de Dados* - [Gustavo Taufembach Bett](https://github.com/GustavoTBett)
 * **Aluno 4** - *Documentação* - [Lucas Zanoni](https://github.com/Castrozan)
 * **Aluno 5** - *Documentação* - [Miguel Cimolin](https://github.com/miguelcimolin)
 * **Aluno 6** - *Documentação* - [Pedro Guedes](https://github.com/Pedroguedez)
