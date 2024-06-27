@@ -2,12 +2,47 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://github.com/thiagoDimon/buson-bd-eng-dados/</loc>
-         <lastmod>2024-06-22</lastmod>
+         <lastmod>2024-06-27</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://github.com/thiagoDimon/buson-bd-eng-dados/configuracoesAirflow/</loc>
+         <lastmod>2024-06-27</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://github.com/thiagoDimon/buson-bd-eng-dados/configuracoesDocker/</loc>
+         <lastmod>2024-06-27</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://github.com/thiagoDimon/buson-bd-eng-dados/dashboard/</loc>
+         <lastmod>2024-06-27</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://github.com/thiagoDimon/buson-bd-eng-dados/executando/</loc>
+         <lastmod>2024-06-27</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://github.com/thiagoDimon/buson-bd-eng-dados/geracaoDados/</loc>
+         <lastmod>2024-06-27</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://github.com/thiagoDimon/buson-bd-eng-dados/inicializando/</loc>
+         <lastmod>2024-06-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://github.com/thiagoDimon/buson-bd-eng-dados/instalacao/</loc>
-         <lastmod>2024-06-22</lastmod>
+         <lastmod>2024-06-27</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://github.com/thiagoDimon/buson-bd-eng-dados/preRequisitos/</loc>
+         <lastmod>2024-06-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>

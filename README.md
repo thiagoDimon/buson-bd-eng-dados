@@ -2,58 +2,57 @@
 
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
-O projeto buson se baseia em um banco de dados dimensional criado na matéria de ia, sendo usado como base para criar uma grande massa de dados e fazer uma ingestão de dados usando o modelo medalhão para no final visualizar os dados em um bi.
+O projeto BusON se baseia em um banco de dados dimensional criado na matéria de IA, sendo usado como base para criar uma grande massa de dados e fazer uma ingestão de dados usando o modelo medalhão para no final visualizar os dados em um BI.
 
 ## Começando
 
 Essas instruções permitirão que você obtenha uma cópia do projeto em operação na sua máquina local para fins de desenvolvimento e teste.
 
-Consulte **[Implantação](#-implanta%C3%A7%C3%A3o)** para saber como implantar o projeto.
+Consulte **[Documentação MkDocs](https://thiagodimon.github.io/buson-bd-eng-dados/)** para saber como implantar o projeto.
 
 ## Desenho de Arquitetura
 
-Coloqui uma imagem do seu projeto, como no exemplo abaixo:
+![image](https://github.com/thiagoDimon/buson-bd-eng-dados/assets/69534716/e9c197ca-1acc-4dde-8e3c-57d17957c252)
 
-![image](https://github.com/jlsilva01/projeto-ed-satc/assets/484662/541de6ab-03fa-49b3-a29f-dec8857360c1)
+## Visão Geral
 
-
-## Pré-requisitos
-
-De que coisas você precisa para instalar o software e como instalá-lo?
-
-```
-Dar exemplos
-```
-
-## Instalação
-
-Uma série de exemplos passo-a-passo que informam o que você deve executar para ter um ambiente de desenvolvimento em execução.
-
-Diga como essa etapa será:
-
-```
-Dar exemplos
-```
-
-E repita:
-
-```
-Até finalizar
-```
-
-Termine com um exemplo de como obter dados do sistema ou como usá-los para uma pequena demonstração.
-
-## Implantação
-
-Adicione notas adicionais sobre como implantar isso em um sistema ativo
+* O Apache Airflow é nossa plataforma de gerenciamento de fluxo de trabalho, responsável por orquestrar todas as tarefas na nossa pipeline de dados e transformações necessárias, até a disponibilização em uma interface de análise de dados.
+* A massa de dados será gerada usando a biblioteca Faker em Java.
+* Postgres foi utilizado para armazenar esses dados, utilizando um script Python.
+* O Spark será usado junto com o Airflow para ler e manipular os dados do Postgres, que serão extraídos no formato de arquivo CSV.
+* O MinIO é usado para criar Buckets, permitindo a persistência dos dados em Object Storage.
+* O Bucket do MinIO criará as 4 camadas da pipeline: Landing-Zone, Bronze, Silver e Gold.
+* Na Landing-Zone, os dados serão extraídos do banco e persistidos em seu formato bruto, em CSV.
+* Na Bronze, os dados serão extraídos da Landing-Zone e colunas de metadados serão criadas. As alterações serão persistidas na camada Bronze, em CSV.
+* Na Silver, os dados serão extraídos da Bronze e colunas de metadados serão criadas. Os nomes das colunas serão padronizados, e colunas desnecessárias serão descartadas. As alterações serão persistidas na camada Silver, em CSV.
+* Na Gold, os dados serão extraídos da Silver e colunas de metadados serão criadas. O nome de algumas colunas será alterado para evitar ambiguidades nos resultados. Após isso, os dataframes serão unificados em apenas um. Este dataframe final será persistido na camada Gold, em CSV.
+* O Power BI será responsável pela apresentação dos dados em Dashboards.
 
 ## Ferramentas utilizadas
 
-Mencione as ferramentas que você usou para criar seu projeto
+* [Apache Airflow](https://airflow.apache.org) - Orquestração de Fluxos de Trabalho
+* [Apache Spark](https://spark.apache.org) - Processamento Distribuído de Dados
+* [Docker](https://www.docker.com/products/docker-desktop/) - Contêinerização de Aplicações
+* [MinIO](https://min.io) - Armazenamento de Objetos Escalável
+* [MkDocs](https://www.mkdocs.org) - Documentação
+* [Postgres](https://www.postgresql.org) - Banco de Dados Relacional
+* [Power BI](https://www.microsoft.com/pt-br/power-platform/products/power-bi/landing/free-account?ef_id=_k_Cj0KCQjwj9-zBhDyARIsAERjds3j5ypF-nLzY9DWq1WYBWyktjocg-5a4B2SoYNIfRIwYLMGAQI5GDQaAgZWEALw_wcB_k_&OCID=AIDcmmk4cy2ahx_SEM__k_Cj0KCQjwj9-zBhDyARIsAERjds3j5ypF-nLzY9DWq1WYBWyktjocg-5a4B2SoYNIfRIwYLMGAQI5GDQaAgZWEALw_wcB_k_&gad_source=1&gclid=Cj0KCQjwj9-zBhDyARIsAERjds3j5ypF-nLzY9DWq1WYBWyktjocg-5a4B2SoYNIfRIwYLMGAQI5GDQaAgZWEALw_wcB) - Visualização e Análise dos Dados Processados
 
-* Ferramenta 1 + link - Breve descrição
-* Ferramenta 2 + link - Breve descrição
-* Ferramenta 3 + link - Breve descrição
+## Versão
+
+Fale sobre a versão e o controle de versões para o projeto. Para as versões disponíveis, observe as [tags neste repositório](https://github.com/suas/tags/do/projeto). 
+
+## Autores
+
+* **Aluno 1** - *Power BI* - [Bruno Dimon](https://github.com/BrunoDimon)
+* **Aluno 2** - *Documentação* - [Douglas Kuerten](https://github.com/DouglasKuerten)
+* **Aluno 3** - *Ingestão de Dados* - [Gustavo Taufembach Bett](https://github.com/GustavoTBett)
+* **Aluno 4** - *Documentação* - [Lucas Zanoni](https://github.com/Castrozan)
+* **Aluno 5** - *Documentação* - [Miguel Cimolin](https://github.com/miguelcimolin)
+* **Aluno 6** - *Documentação* - [Pedro Guedes](https://github.com/Pedroguedez)
+* **Aluno 7** - *Documentação* - [Thiago Dimon](https://github.com/thiagodimon)
+
+Todos os Colaboradores do Projeto -> [CLIQUE AQUI](https://github.com/usuario/projeto/colaboradores).
 
 ## Colaboração
 
@@ -74,25 +73,12 @@ git push -u origin master
 
 Isso configurará o repositório remoto e enviará suas modificações para lá.
 
-## Versão
-
-Fale sobre a versão e o controle de versões para o projeto. Para as versões disponíveis, observe as [tags neste repositório](https://github.com/suas/tags/do/projeto). 
-
-## Autores
-
-Mencione todos aqueles que ajudaram a levantar o projeto desde o seu início
-
-* **Aluno 1** - *Trabalho Inicial* - [(https://github.com/linkParaPerfil)](https://github.com/linkParaPerfil)
-* **Aluno 2** - *Documentação* - [https://github.com/linkParaPerfil](https://github.com/linkParaPerfil)
-
-Você também pode ver a lista de todos os [colaboradores](https://github.com/usuario/projeto/colaboradores) que participaram deste projeto.
-
 ## Licença
 
 Este projeto está sob a licença (sua licença) - veja o arquivo [LICENSE](https://github.com/jlsilva01/projeto-ed-satc/blob/main/LICENSE) para detalhes.
 
 ## Referências
 
-Cite aqui todas as referências utilizadas neste projeto, pode ser outros repositórios, livros, artigos de internet etc.
-
-
+[Dataway BR](https://www.youtube.com/watch?v=eOrWEsZIfKU)
+[Dremio](https://www.youtube.com/watch?v=X3wfVaSQS_c)
+[Chat-GPT](https://openai.com/chatgpt/)
