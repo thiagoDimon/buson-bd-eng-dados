@@ -16,17 +16,21 @@
     .logo-img-dark {
         display: none;
     }
+}
 
+[data-md-color-media="(prefers-color-scheme: dark)"] {
     .logo-img-light {
         display: block;
     }
 }
 
-
 [data-md-color-media="(prefers-color-scheme: light)"] {
     .logo-img-light {
         display: none;
     }
+}
+
+[data-md-color-media="(prefers-color-scheme: light)"] {
 
     .logo-img-dark {
         display: block;
