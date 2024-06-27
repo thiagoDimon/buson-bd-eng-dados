@@ -1,14 +1,17 @@
-# buson-bd-eng-dados
+# Buson Delta Lake
 
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
-O projeto BusON se baseia em um banco de dados dimensional criado na matéria de IA, sendo usado como base para criar uma grande massa de dados e fazer uma ingestão de dados usando o modelo medalhão para no final visualizar os dados em um BI.
+## Sobre
+ - O projeto Buson Delta Lake se baseia em um banco de dados dimensional criado na matéria de IA do Buson App, sendo usado como base para criar uma grande massa de dados e fazer uma ingestão de dados usando o modelo medalhão para no final visualizar os dados em um BI.
 
-## Começando
+> Buson App é um aplicativo para facilitar o gerenciamento dos pagamentos mensais dos acadêmicos que utilizam o serviço de transporte para deslocamento até as universidades. Além disso, o aplicativo fornece informações detalhadas sobre a associação e, situação dos acadêmicos e seus pagamentos, por meio de um chat com inteligência artificial.
 
-Essas instruções permitirão que você obtenha uma cópia do projeto em operação na sua máquina local para fins de desenvolvimento e teste.
+## Documentação
 
-Consulte **[Documentação MkDocs](https://thiagodimon.github.io/buson-bd-eng-dados/)** para saber como implantar o projeto.
+A documentação permitirá que você obtenha todas as informações sobre o projeto e as instruções para a operação na sua máquina local para fins de desenvolvimento e teste.
+
+Consulte **[Documentação MkDocs](https://thiagodimon.github.io/buson-bd-eng-dados/)** para saber como executar o projeto.
 
 ## Desenho de Arquitetura
 
@@ -38,10 +41,6 @@ Consulte **[Documentação MkDocs](https://thiagodimon.github.io/buson-bd-eng-da
 * [Postgres](https://www.postgresql.org) - Banco de Dados Relacional
 * [Power BI](https://www.microsoft.com/pt-br/power-platform/products/power-bi/landing/free-account?ef_id=_k_Cj0KCQjwj9-zBhDyARIsAERjds3j5ypF-nLzY9DWq1WYBWyktjocg-5a4B2SoYNIfRIwYLMGAQI5GDQaAgZWEALw_wcB_k_&OCID=AIDcmmk4cy2ahx_SEM__k_Cj0KCQjwj9-zBhDyARIsAERjds3j5ypF-nLzY9DWq1WYBWyktjocg-5a4B2SoYNIfRIwYLMGAQI5GDQaAgZWEALw_wcB_k_&gad_source=1&gclid=Cj0KCQjwj9-zBhDyARIsAERjds3j5ypF-nLzY9DWq1WYBWyktjocg-5a4B2SoYNIfRIwYLMGAQI5GDQaAgZWEALw_wcB) - Visualização e Análise dos Dados Processados
 
-## Versão
-
-Fale sobre a versão e o controle de versões para o projeto. Para as versões disponíveis, observe as [tags neste repositório](https://github.com/suas/tags/do/projeto). 
-
 ## Autores
 
 * **Aluno 1** - *Power BI* - [Bruno Dimon](https://github.com/BrunoDimon)
@@ -52,30 +51,11 @@ Fale sobre a versão e o controle de versões para o projeto. Para as versões d
 * **Aluno 6** - *Documentação* - [Pedro Guedes](https://github.com/Pedroguedez)
 * **Aluno 7** - *Documentação* - [Thiago Dimon](https://github.com/thiagodimon)
 
-Todos os Colaboradores do Projeto -> [CLIQUE AQUI](https://github.com/usuario/projeto/colaboradores).
-
-## Colaboração
-
-Por favor, leia o [COLABORACAO](https://gist.github.com/usuario/colaboracao.md) para obter detalhes sobre o nosso código de conduta e o processo para nos enviar pedidos de solicitação.
-
-Se desejar publicar suas modificações em um repositório remoto no GitHub, siga estes passos:
-
-1. Crie um novo repositório vazio no GitHub.
-2. No terminal, navegue até o diretório raiz do projeto.
-3. Execute os seguintes comandos:
-
-```bash
-git remote set-url origin https://github.com/seu-usuario/nome-do-novo-repositorio.git
-git add .
-git commit -m "Adicionar minhas modificações"
-git push -u origin master
-```
-
-Isso configurará o repositório remoto e enviará suas modificações para lá.
+Todos os Colaboradores do Projeto -> [CLIQUE AQUI](https://github.com/thiagoDimon/buson-bd-eng-dados/graphs/contributors).
 
 ## Licença
 
-Este projeto está sob a licença (sua licença) - veja o arquivo [LICENSE](https://github.com/jlsilva01/projeto-ed-satc/blob/main/LICENSE) para detalhes.
+Este projeto está sob a licença (sua licença) - veja o arquivo [LICENSE](https://github.com/thiagoDimon/buson-bd-eng-dados/blob/main/LICENSE) para detalhes.
 
 ## Referências
 
