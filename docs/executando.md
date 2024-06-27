@@ -1,4 +1,4 @@
-# Executando o projeto
+# Pipeline
 
 - Executar as seguintes DAGS na ordem aqui fornecida: 
 
