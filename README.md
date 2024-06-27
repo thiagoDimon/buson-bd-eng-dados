@@ -38,6 +38,21 @@ Consulte **[Documentação MkDocs](https://thiagodimon.github.io/buson-bd-eng-da
 * [Postgres](https://www.postgresql.org) - Banco de Dados Relacional
 * [Power BI](https://www.microsoft.com/pt-br/power-platform/products/power-bi/landing/free-account?ef_id=_k_Cj0KCQjwj9-zBhDyARIsAERjds3j5ypF-nLzY9DWq1WYBWyktjocg-5a4B2SoYNIfRIwYLMGAQI5GDQaAgZWEALw_wcB_k_&OCID=AIDcmmk4cy2ahx_SEM__k_Cj0KCQjwj9-zBhDyARIsAERjds3j5ypF-nLzY9DWq1WYBWyktjocg-5a4B2SoYNIfRIwYLMGAQI5GDQaAgZWEALw_wcB_k_&gad_source=1&gclid=Cj0KCQjwj9-zBhDyARIsAERjds3j5ypF-nLzY9DWq1WYBWyktjocg-5a4B2SoYNIfRIwYLMGAQI5GDQaAgZWEALw_wcB) - Visualização e Análise dos Dados Processados
 
+## Versão
+
+Fale sobre a versão e o controle de versões para o projeto. Para as versões disponíveis, observe as [tags neste repositório](https://github.com/suas/tags/do/projeto). 
+
+## Autores
+
+* **Bruno Dimon** - *Documentação* - [Bruno Dimon](https://github.com/BrunoDimon)
+* **Douglas Kuerten** - *Documentação* - [Douglas Kuerten](https://github.com/DouglasKuerten)
+* **Gustavo Taufembach Bett** - *Documentação* - [Gustavo Taufembach Bett](https://github.com/GustavoTBett)
+* **Lucas Zanoni** - *Documentação* - [Lucas Zanoni](https://github.com/Castrozan)
+* **Miguel Cimolin** - *Documentação* - [Miguel Cimolin](https://github.com/miguelcimolin)
+* **Pedro Guedes** - *Documentação* - [Pedro Guedes](https://github.com/Pedroguedez)
+
+Você também pode ver a lista de todos os [colaboradores](https://github.com/usuario/projeto/colaboradores) que participaram deste projeto.
+
 ## Colaboração
 
 Por favor, leia o [COLABORACAO](https://gist.github.com/usuario/colaboracao.md) para obter detalhes sobre o nosso código de conduta e o processo para nos enviar pedidos de solicitação.
@@ -56,21 +71,6 @@ git push -u origin master
 ```
 
 Isso configurará o repositório remoto e enviará suas modificações para lá.
-
-## Versão
-
-Fale sobre a versão e o controle de versões para o projeto. Para as versões disponíveis, observe as [tags neste repositório](https://github.com/suas/tags/do/projeto). 
-
-## Autores
-
-* **Bruno Dimon** - *Documentação* - [Bruno Dimon](https://github.com/BrunoDimon)
-* **Douglas Kuerten** - *Documentação* - [Douglas Kuerten](https://github.com/DouglasKuerten)
-* **Gustavo Taufembach Bett** - *Documentação* - [Gustavo Taufembach Bett](https://github.com/GustavoTBett)
-* **Lucas Zanoni** - *Documentação* - [Lucas Zanoni](https://github.com/Castrozan)
-* **Miguel Cimolin** - *Documentação* - [Miguel Cimolin](https://github.com/miguelcimolin)
-* **Pedro Guedes** - *Documentação* - [Pedro Guedes](https://github.com/Pedroguedez)
-
-Você também pode ver a lista de todos os [colaboradores](https://github.com/usuario/projeto/colaboradores) que participaram deste projeto.
 
 ## Licença
 
