@@ -3,7 +3,7 @@
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 ## Sobre
- - O projeto Buson Delta Lake se baseia em um banco de dados dimensional criado na matéria de IA do Buson App, sendo usado como base para criar uma grande massa de dados e fazer uma ingestão de dados usando o modelo medalhão para no final visualizar os dados em um BI.
+ - O projeto Buson Delta Lake se baseia em um banco de dados relacional criado na matéria de IA do Buson App, sendo usado como base para criar uma grande massa de dados e fazer uma ingestão de dados usando o modelo medalhão para no final visualizar os dados em um BI.
 
 > Buson App é um aplicativo para facilitar o gerenciamento dos pagamentos mensais dos acadêmicos que utilizam o serviço de transporte para deslocamento até as universidades. Além disso, o aplicativo fornece informações detalhadas sobre a associação e, situação dos acadêmicos e seus pagamentos, por meio de um chat com inteligência artificial.
 
@@ -43,13 +43,13 @@ Consulte **[Documentação MkDocs](https://thiagodimon.github.io/buson-bd-eng-da
 
 ## Autores
 
-* **Aluno 1** - *Power BI* - [Bruno Dimon](https://github.com/BrunoDimon)
-* **Aluno 2** - *Documentação* - [Douglas Kuerten](https://github.com/DouglasKuerten)
-* **Aluno 3** - *Ingestão de Dados* - [Gustavo Taufembach Bett](https://github.com/GustavoTBett)
-* **Aluno 4** - *Documentação* - [Lucas Zanoni](https://github.com/Castrozan)
-* **Aluno 5** - *Documentação* - [Miguel Cimolin](https://github.com/miguelcimolin)
-* **Aluno 6** - *Documentação* - [Pedro Guedes](https://github.com/Pedroguedez)
-* **Aluno 7** - *Documentação* - [Thiago Dimon](https://github.com/thiagodimon)
+* *Power BI/Documentação/Métricas* - [Bruno Dimon](https://github.com/BrunoDimon)
+* *Configuração Mkdocs/Documentação/Métricas* - [Douglas Kuerten](https://github.com/DouglasKuerten)
+* *Ingestão de Dados* - [Gustavo Taufembach Bett](https://github.com/GustavoTBett)
+* *Pipeline de Dados* - [Lucas Zanoni](https://github.com/Castrozan)
+* *Documentação* - [Miguel Cimolin](https://github.com/miguelcimolin)
+* *Documentação* - [Pedro Guedes](https://github.com/Pedroguedez)
+* *Pipeline de Dados* - [Thiago Dimon](https://github.com/thiagodimon)
 
 Todos os Colaboradores do Projeto -> [CLIQUE AQUI](https://github.com/thiagoDimon/buson-bd-eng-dados/graphs/contributors).
 
@@ -60,5 +60,7 @@ Este projeto está sob a licença (sua licença) - veja o arquivo [LICENSE](http
 ## Referências
 
 [Dataway BR](https://www.youtube.com/watch?v=eOrWEsZIfKU)
+
 [Dremio](https://www.youtube.com/watch?v=X3wfVaSQS_c)
+
 [Chat-GPT](https://openai.com/chatgpt/)
