@@ -89,8 +89,8 @@ nav:
   - Início: index.md
   - Pré-Requisitos: preRequisitos.md
   - Configurações Docker: configuracoesDocker.md
+  - Geração de Dados: geracaoDados.md
   - Inicializando: inicializando.md
   - Configurações Airflow: configuracoesAirflow.md
   - Pipeline: executando.md
-  - Geração de Dados: geracaoDados.md
   - Dashboard: dashboard.md
