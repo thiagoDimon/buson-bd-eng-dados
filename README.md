@@ -44,14 +44,15 @@ Fale sobre a versão e o controle de versões para o projeto. Para as versões d
 
 ## Autores
 
-* **Bruno Dimon** - *Documentação* - [Bruno Dimon](https://github.com/BrunoDimon)
-* **Douglas Kuerten** - *Documentação* - [Douglas Kuerten](https://github.com/DouglasKuerten)
-* **Gustavo Taufembach Bett** - *Documentação* - [Gustavo Taufembach Bett](https://github.com/GustavoTBett)
-* **Lucas Zanoni** - *Documentação* - [Lucas Zanoni](https://github.com/Castrozan)
-* **Miguel Cimolin** - *Documentação* - [Miguel Cimolin](https://github.com/miguelcimolin)
-* **Pedro Guedes** - *Documentação* - [Pedro Guedes](https://github.com/Pedroguedez)
+* **Aluno 1** - *Documentação* - [Bruno Dimon](https://github.com/BrunoDimon)
+* **Aluno 2** - *Documentação* - [Douglas Kuerten](https://github.com/DouglasKuerten)
+* **Aluno 3** - *Documentação* - [Gustavo Taufembach Bett](https://github.com/GustavoTBett)
+* **Aluno 4** - *Documentação* - [Lucas Zanoni](https://github.com/Castrozan)
+* **Aluno 5** - *Documentação* - [Miguel Cimolin](https://github.com/miguelcimolin)
+* **Aluno 6** - *Documentação* - [Pedro Guedes](https://github.com/Pedroguedez)
+* **Aluno 7** - *Documentação* - [Thiago Dimon](https://github.com/thiagodimon)
 
-Você também pode ver a lista de todos os [colaboradores](https://github.com/usuario/projeto/colaboradores) que participaram deste projeto.
+Todos os Colaboradores do Projeto -> [CLIQUE AQUI](https://github.com/usuario/projeto/colaboradores).
 
 ## Colaboração
 
