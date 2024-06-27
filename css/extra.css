@@ -7,3 +7,28 @@
 .md-header__ellipsis {
     display: none;
 }
+
+.test {
+    display: block;
+}
+
+[data-md-color-media="(prefers-color-scheme: dark)"] {
+    .logo-img-dark {
+        display: none;
+    }
+
+    .logo-img-light {
+        display: block;
+    }
+}
+
+
+[data-md-color-media="(prefers-color-scheme: light)"] {
+    .logo-img-light {
+        display: none;
+    }
+
+    .logo-img-dark {
+        display: block;
+    }
+}
