@@ -2,7 +2,7 @@
 
 - Acessar a seguinte url para realizar a execução das DAGS do Airflow: http://localhost:8080/
 - Usuário e senha de acesso ao airflow: admin e admin
-- Configurar a conexão com o cluster do spark na guia admin e posteriormente em conections (imagem da configuração enviada pelo Zanoni)
+- Configurar a conexão com o cluster do spark na guia admin e posteriormente em conections
 
 
 # Váriaveis de Ambiente Minio

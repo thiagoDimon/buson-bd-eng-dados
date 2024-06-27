@@ -197,7 +197,3 @@ Dessa forma, os dados vão ser persistidos após manipulados.
  ```
 
 #
-#
-
-Nessa parte descrita acima, acredito que pode ser colocado junto os comandos disponiveis nos arquivos, buckets.py, landzone.py, bronze.py, 
-silver.py e gold.py, os quais refltem todo o processo descrito acima como exemplificação que estão no caminho astro/dags
