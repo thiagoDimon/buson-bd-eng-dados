@@ -80,9 +80,6 @@ markdown_extensions:
   - pymdownx.superfences
   - attr_list
   - md_in_html
-  - pymdownx.emoji:
-      emoji_index: !!python/name:material.extensions.emoji.twemoji
-      emoji_generator: !!python/name:material.extensions.emoji.to_svg
 
 # Customization options
 extra_css:
@@ -94,6 +91,6 @@ nav:
   - Configurações Docker: configuracoesDocker.md
   - Inicializando: inicializando.md
   - Configurações Airflow: configuracoesAirflow.md
-  - Executando o Projeto: executando.md
+  - Pipeline: executando.md
   - Geração de Dados: geracaoDados.md
   - Dashboard: dashboard.md

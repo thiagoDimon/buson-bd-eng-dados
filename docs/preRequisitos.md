@@ -25,6 +25,12 @@ Para garantir o funcionamento adequado do projeto, certifique-se de que todos os
 7. **DOCKER**
     - Ferramenta para criar e gerenciar containers, utilizada para subir o Airflow, MinIO e o cluster do Spark.
 
+8. **POWER BI**
+    - Ferramenta utilizada para a criação e visualização dos dados de forma visual.
+
+9. **ODBC**
+    - Driver PostgreSQL ANSI(x64) utilizado para a conexão com o banco de dados Postgres.
+
 
 
 ## Ferramentas Adicionais (Opcional)
