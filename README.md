@@ -14,11 +14,6 @@ Consulte **[Documentação MkDocs](https://thiagodimon.github.io/buson-bd-eng-da
 
 ![image](https://github.com/thiagoDimon/buson-bd-eng-dados/assets/69534716/e9c197ca-1acc-4dde-8e3c-57d17957c252)
 
-## Pré-requisitos
-
-* **Docker:** Necessário ter [Docker](https://www.docker.com/products/docker-desktop/) instalado na máquina.
-* **Git:** Necessário ter [Git](https://git-scm.com) instalado na máquina.
-
 ## Visão Geral
 
 * O Apache Airflow é nossa plataforma de gerenciamento de fluxo de trabalho, responsável por orquestrar todas as tarefas na nossa pipeline de dados e transformações necessárias, até a disponibilização em uma interface de análise de dados.
@@ -32,10 +27,6 @@ Consulte **[Documentação MkDocs](https://thiagodimon.github.io/buson-bd-eng-da
 * Na Silver, os dados serão extraídos da Bronze e colunas de metadados serão criadas. Os nomes das colunas serão padronizados, e colunas desnecessárias serão descartadas. As alterações serão persistidas na camada Silver, em CSV.
 * Na Gold, os dados serão extraídos da Silver e colunas de metadados serão criadas. O nome de algumas colunas será alterado para evitar ambiguidades nos resultados. Após isso, os dataframes serão unificados em apenas um. Este dataframe final será persistido na camada Gold, em CSV.
 * O Power BI será responsável pela apresentação dos dados em Dashboards.
-
-## Implantação
-
-Adicione notas adicionais sobre como implantar isso em um sistema ativo
 
 ## Ferramentas utilizadas
 
