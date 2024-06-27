@@ -359,7 +359,7 @@
         
   
   <span class="md-ellipsis">
-    Executando o Projeto
+    Pipeline
   </span>
   
 
@@ -441,11 +441,44 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#colocar-informacoes-sobre-o-power-bi" class="md-nav__link">
+  <a href="#configuracao-do-power-bi" class="md-nav__link">
     <span class="md-ellipsis">
-      COLOCAR INFORMACOES SOBRE O POWER BI
+      Configuração do Power BI
     </span>
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#execucao-do-dashboard" class="md-nav__link">
+    <span class="md-ellipsis">
+      Execução do Dashboard
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#informacoes-do-dashboard" class="md-nav__link">
+    <span class="md-ellipsis">
+      Informações do Dashboard
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Informações do Dashboard">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exemplo-de-visualizacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exemplo de Visualização:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -484,11 +517,44 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#colocar-informacoes-sobre-o-power-bi" class="md-nav__link">
+  <a href="#configuracao-do-power-bi" class="md-nav__link">
     <span class="md-ellipsis">
-      COLOCAR INFORMACOES SOBRE O POWER BI
+      Configuração do Power BI
     </span>
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#execucao-do-dashboard" class="md-nav__link">
+    <span class="md-ellipsis">
+      Execução do Dashboard
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#informacoes-do-dashboard" class="md-nav__link">
+    <span class="md-ellipsis">
+      Informações do Dashboard
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Informações do Dashboard">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exemplo-de-visualizacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exemplo de Visualização:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -511,7 +577,28 @@
 
 
 <h1 id="dashboard">Dashboard</h1>
-<h2 id="colocar-informacoes-sobre-o-power-bi">COLOCAR INFORMACOES SOBRE O POWER BI</h2>
+<h2 id="configuracao-do-power-bi">Configuração do Power BI</h2>
+<p>O arquivo já vem pré configurado para rodar localmente com o banco puxando do docker.</p>
+<p>A conexão com o banco se faz por meio do Driver ODBC, caso não tenha instalado na maquina, precisa fazer o download.</p>
+<p>Após a instalação do driver, quando abrir o arquivo no Power BI e tentar atualizar os dados, o mesmo irá solicitar a conexão com o banco, onde o usuario padrão é postgres e a senha padrão é postgres. Caso possua um usuario postgres já cadastrado na maquina com informações diferentes, utilizar o da maquina.</p>
+<h2 id="execucao-do-dashboard">Execução do Dashboard</h2>
+<p>Após a execução completa da pipeline, pode-se abrir o arquivo no Power BI desktop e ir manualmente na consulta para atualizar o dados.</p>
+<p>O dashboard estará com os dados atualizados e pronto para realizar as análises.</p>
+<h2 id="informacoes-do-dashboard">Informações do Dashboard</h2>
+<p>O dashboard foi feito pensado em facilitar a tomada de decisão da presidência de cada associação, com 4 KPI's e 2 métricas.</p>
+<ul>
+<li>
+<p>KPI's: Quantidade de pagamentos em aberto, atrasados e pagos e o valor total arrecadado.</p>
+</li>
+<li>
+<p>Métricas: Quantidade de pessoas por dias da semana e Valor arrecadado por mês.</p>
+</li>
+<li>
+<p>Filtros: Associação e período (Ano).</p>
+</li>
+</ul>
+<h3 id="exemplo-de-visualizacao">Exemplo de Visualização:</h3>
+<p><img alt="Alt text" src="../images/powerBi.png" title="a title" /></p>
 
 
 
