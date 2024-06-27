@@ -28,7 +28,7 @@
 - Após navegar até a pasta, execute o seguinte comando no Terminal para clonar o repositório:
 
       ```
-      git clone https://github.com/thiagoDimon/    buson-bd-eng-dados.git
+      git clone https://github.com/thiagoDimon/buson-bd-eng-dados.git
       ```
 
 ## Iniciando as Imagens do Container

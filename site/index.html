@@ -18,7 +18,7 @@
       
       
       <link rel="icon" href="assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.26">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.27">
     
     
       
@@ -74,6 +74,11 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
+      
+        
+        <a href="#modelo-relacional-buson-app" class="md-skip">
+          Ir para o conteúdo
+        </a>
       
     </div>
     <div data-md-component="announce">
@@ -257,6 +262,17 @@
       
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Início
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="." class="md-nav__link md-nav__link--active">
         
   
@@ -266,6 +282,41 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#modelo-relacional-buson-app" class="md-nav__link">
+    <span class="md-ellipsis">
+      Modelo Relacional Buson App
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sobre-o-buson-delta-lake" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sobre o Buson Delta Lake
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -429,6 +480,32 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#modelo-relacional-buson-app" class="md-nav__link">
+    <span class="md-ellipsis">
+      Modelo Relacional Buson App
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sobre-o-buson-delta-lake" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sobre o Buson Delta Lake
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -452,12 +529,38 @@
 <p><img alt="Buson App Logo" class="logo-img-dark" src="images/busOnFontePreta.png" />
 <img alt="Buson App Logo" class="logo-img-light" src="images/busOnFonteBranca2.png" /></p>
 <ul>
-<li>
-<p>Buson App é um aplicativo desenvolvido para facilitar o gerenciamento dos pagamentos mensais dos acadêmicos que utilizam o serviço de transporte para deslocamento até as universidades. Além disso, o aplicativo fornece informações detalhadas sobre a associação, situação dos acadêmicos e seus pagamentos por meio de um chat com inteligência artificial.</p>
+<li>Buson App é um aplicativo desenvolvido para facilitar o gerenciamento dos pagamentos mensais dos acadêmicos que utilizam o serviço de transporte para deslocamento até as universidades. Além disso, o aplicativo fornece informações detalhadas sobre a associação, situação dos acadêmicos e seus pagamentos por meio de um chat com inteligência artificial.</li>
+</ul>
+<h3 id="modelo-relacional-buson-app">Modelo Relacional Buson App</h3>
+<ul>
+<li><strong>Associação</strong> <ul>
+<li>Tabela contém os dados de associações.</li>
+</ul>
 </li>
-<li>
-<p>O projeto Buson Delta Lake se baseia em um banco de dados relacional criado na matéria de IA do Buson App, sendo utilizado como base para criar uma grande massa de dados e fazer uma ingestão de dados usando o modelo Medalhão. O objetivo final é visualizar os dados em um BI.</p>
+<li><strong>Instituição</strong><ul>
+<li>Tabela contém os dados de instituições de ensino.</li>
+</ul>
 </li>
+<li><strong>Curso</strong><ul>
+<li>Tabela contém os dados de cursos por instituição.</li>
+</ul>
+</li>
+<li><strong>Usuário</strong><ul>
+<li>Tabela contém os dados de usuários, e cada usuário tem um curso, uma instituição e associação.</li>
+</ul>
+</li>
+<li><strong>Pagamento</strong><ul>
+<li>Tabela contém os dados de pagamentos de usuários.</li>
+</ul>
+</li>
+<li><strong>Parametro</strong><ul>
+<li>Tabela contém os parâmetros para aplicação, por exemplo valores de mensalidades, dia de vencimento, etc.</li>
+</ul>
+</li>
+</ul>
+<h3 id="sobre-o-buson-delta-lake">Sobre o Buson Delta Lake</h3>
+<ul>
+<li>O projeto Buson Delta Lake se baseia em um banco de dados relacional criado na matéria de IA do Buson App, sendo utilizado como base para criar uma grande massa de dados e fazer uma ingestão de dados usando o modelo Medalhão. O objetivo final é visualizar os dados em um BI.</li>
 </ul>
 
 
